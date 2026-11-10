@@ -1,0 +1,492 @@
+/**
+ * Forlabs Helper — Navigation & Hamburger Menu Customization
+ * Supports 3 independently switchable styles:
+ * 1. Original (Default LMS sidebar)
+ * 2. Compact Hover-Expand (Icons column that expands smoothly over content on hover)
+ * 3. Header Navigation (Icons in top header bar as a distinct button group, no sidebar)
+ */
+
+/* ==========================================================================
+   STYLE 2: Compact Hover-Expand Menu (forlabs-menu-compact)
+   ========================================================================== */
+
+/* Page container is pinned to 50px margin; never shifts or jumps */
+html.forlabs-menu-compact .lm-panel .lm-container {
+  margin-left: 50px !important;
+  transition: none !important;
+}
+
+/* Sidebar default state: 50px slim column of icons */
+html.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-collapsed .lm-menu,
+html.forlabs-dark-theme.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-dark-theme.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu,
+html.forlabs-ui-fixes.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-ui-fixes.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu,
+html.forlabs-glassmorphism.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-glassmorphism.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu {
+  width: 50px !important;
+  overflow: hidden !important;
+  z-index: 1000 !important;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease !important;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel .lm-menu,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Header container in Style 2: height 50px, pinned at top 0, left 0, right 0, zero padding */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header {
+  height: 50px !important;
+  width: 100% !important;
+  padding: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Base styling for both header title links:
+   Locked at 50px height, flex vertically centered, zero vertical padding, smooth opacity crossfade */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu .lm-menu-header .lm-menu-header-title,
+html.forlabs-menu-compact .lm-panel.lm-menu-mobile-collapsed .lm-menu .lm-menu-header .lm-menu-header-title {
+  display: flex !important;
+  align-items: center !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  height: 50px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  transition: opacity 0.2s ease !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title svg {
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Collapsed logo (graduation cap 24x20): strictly centered horizontally and vertically in 50px cell */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed,
+html.forlabs-menu-compact .lm-panel.lm-menu-mobile-collapsed .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed {
+  width: 50px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed svg {
+  width: 24px !important;
+  height: 20px !important;
+  margin: 0 auto !important;
+}
+
+/* Full visible logo ("forlabs • бки игу" 144x20):
+   Cap inside is at x=0; with padding-left: 13px, the cap aligns EXACTLY at (13px, 15px) identical to collapsed cap!
+   Permanently positioned and laid out; hidden via opacity in collapsed mode to prevent layout jumps */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible,
+html.forlabs-menu-compact .lm-panel.lm-menu-mobile-collapsed .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible {
+  width: 250px !important;
+  right: auto !important;
+  padding-left: 13px !important;
+  padding-right: 0 !important;
+  justify-content: flex-start !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible svg {
+  width: 144px !important;
+  height: 20px !important;
+  margin: 0 !important;
+}
+
+/* Hide hamburger toggles since hover expands the menu */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-toggle,
+html.forlabs-menu-compact .lm-panel .lm-container .lm-container-header .lm-menu-toggle {
+  display: none !important;
+}
+
+/* Each menu item cell: height 50px = width 50px (square 50px x 50px cells in collapsed mode & taller in expanded mode) */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item {
+  height: 50px !important;
+  width: 250px !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item > a {
+  height: 50px !important;
+  line-height: 50px !important;
+  padding: 0 15px 0 54px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Perfect centering of the icon inside the 50px x 50px cell */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item > a .lm-menu-list-item-icon {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item > a .lm-menu-list-item-icon .fa,
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item > a .lm-menu-list-item-icon img,
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item > a .lm-menu-list-item-icon span {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+}
+
+/* Vertical centering of badges & sub-menu indicators in 50px height */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item .badge {
+  top: 15px !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.with-sub-menu > a:before {
+  top: 20px !important;
+}
+
+/* Submenu items height when expanded */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.with-sub-menu .lm-menu-sub-list .lm-menu-sub-list-item > a {
+  height: 44px !important;
+  line-height: 44px !important;
+  padding-left: 54px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Hide footer and text labels in collapsed state */
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-footer {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item > a > span:not(.lm-menu-list-item-icon) {
+  opacity: 0 !important;
+  white-space: nowrap !important;
+  transition: opacity 0.2s ease !important;
+}
+
+/* Smooth expansion on hover: floats OVER content without moving page */
+html.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu:hover,
+html.forlabs-menu-compact .lm-panel.lm-menu-desktop-collapsed .lm-menu:hover,
+html.forlabs-dark-theme.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-dark-theme.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu:hover,
+html.forlabs-ui-fixes.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-ui-fixes.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu:hover,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu:hover,
+html.forlabs-glassmorphism.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-glassmorphism.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu:hover {
+  width: 250px !important;
+  z-index: 1000 !important;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel .lm-menu:hover,
+html.forlabs-dark-theme.forlabs-ui-fixes.forlabs-menu-compact .lm-panel.lm-menu-desktop-visible .lm-menu:hover {
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Header title crossfade on hover:
+   The cap icon stays on the EXACT same pixel coordinates; "forlabs • бки игу" smoothly fades in without any jump or drop */
+html.forlabs-menu-compact .lm-panel .lm-menu:hover .lm-menu-header .lm-menu-header-title.lm-menu-collapsed {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu:hover .lm-menu-header .lm-menu-header-title.lm-menu-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu:hover .lm-menu-inner .lm-menu-list .lm-menu-list-item > a > span:not(.lm-menu-list-item-icon) {
+  opacity: 1 !important;
+}
+
+html.forlabs-menu-compact .lm-panel .lm-menu:hover .lm-menu-footer {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+/* ==========================================================================
+   STYLE 3: Header Navigation Bar (forlabs-menu-header)
+   - Search bar remains in its 100% original style and position
+   - Section buttons look identical to .lm-control-bar-item (sun, profile, logout)
+   - Grouped together between the search bar and the user control icons
+   ========================================================================== */
+
+/* Completely hide sidebar menu and give container 100% full width */
+html.forlabs-menu-header .lm-panel .lm-menu {
+  display: none !important;
+}
+
+html.forlabs-menu-header .lm-panel .lm-container {
+  margin-left: 0 !important;
+  transition: none !important;
+}
+
+/* Hide native menu toggle */
+html.forlabs-menu-header .lm-menu-toggle {
+  display: none !important;
+}
+
+/* Container header: overflow visible so dropdowns render without clipping */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header {
+  overflow: visible !important;
+}
+
+/* Control bar styling in Style 3: stays pinned at right: 0 containing user controls */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar {
+  display: flex !important;
+  align-items: center !important;
+  overflow: visible !important;
+  padding-left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 50px !important;
+  background: transparent !important;
+  position: absolute !important;
+  z-index: 10 !important;
+}
+
+/* Section buttons group: positioned centered in the space between search bar and right button group */
+html.forlabs-menu-header .forlabs-header-sections-group {
+  display: flex !important;
+  align-items: center !important;
+  height: 50px !important;
+  position: absolute !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+/* Individual section button wrapper */
+html.forlabs-menu-header .forlabs-section-item {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 50px !important;
+}
+
+/* ALL items in .lm-control-bar (section buttons, theme toggle, profile, logout) in Style 3:
+   Since .lm-control-bar is display: flex, native table-cell vertical-align: middle no longer applies.
+   We explicitly make each item a 50x50px inline-flex container with perfect vertical & horizontal centering. */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item,
+html.forlabs-menu-header .forlabs-section-btn {
+  width: 50px !important;
+  height: 50px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  color: #aaa !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  text-decoration: none !important;
+  transition: none !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  line-height: 50px !important;
+}
+
+/* Profile wrapper <div> and other internal wrappers centered inside the 50x50 cell */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item > div {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Dark theme color for all control bar items */
+html.forlabs-dark-theme.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item,
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-section-btn {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Hover state: identical across all control bar items */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item:hover,
+html.forlabs-menu-header .forlabs-section-btn:hover {
+  color: #fff !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item:hover,
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-section-btn:hover {
+  color: var(--fl-text-bright) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Active state: identical across all control bar items */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item.active,
+html.forlabs-menu-header .forlabs-section-btn.active,
+html.forlabs-menu-header .forlabs-section-item.active .forlabs-section-btn {
+  color: #fff !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item.active,
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-section-btn.active,
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-section-item.active .forlabs-section-btn {
+  color: var(--fl-text-bright) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Icon sizing for all items */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item .fa,
+html.forlabs-menu-header .forlabs-section-btn .fa,
+html.forlabs-menu-header .forlabs-section-btn span {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto !important;
+}
+
+/* Profile image sizing */
+html.forlabs-menu-header .lm-panel .lm-container .lm-container-header .lm-control-bar .lm-control-bar-item img {
+  width: 30px !important;
+  height: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+  border-radius: 50% !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Caret for submenus */
+html.forlabs-menu-header .forlabs-dropdown-caret {
+  position: absolute !important;
+  bottom: 5px !important;
+  right: 5px !important;
+  font-size: 8px !important;
+  opacity: 0.6 !important;
+}
+
+/* Badge for unread counts */
+html.forlabs-menu-header .forlabs-section-badge {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  background: #e55353 !important;
+  color: #ffffff !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  padding: 2px 4px !important;
+  border-radius: 6px !important;
+}
+
+/* Vertical divider is hidden when section buttons are centered in open space */
+html.forlabs-menu-header .forlabs-header-divider {
+  display: none !important;
+}
+
+/* Submenu dropdown */
+html.forlabs-menu-header .forlabs-header-dropdown {
+  display: none !important;
+  position: absolute !important;
+  top: 50px !important;
+  left: 0 !important;
+  min-width: 190px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(127, 127, 127, 0.25) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  z-index: 1000 !important;
+  padding: 4px 0 !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-header-dropdown {
+  background: #161a22 !important;
+  border-color: #363c44 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.forlabs-menu-header .forlabs-section-item.open .forlabs-header-dropdown,
+html.forlabs-menu-header .forlabs-section-item:hover .forlabs-header-dropdown {
+  display: block !important;
+}
+
+html.forlabs-menu-header .forlabs-header-dropdown-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 14px !important;
+  color: #24292f !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-header-dropdown-item {
+  color: #c9d1d9 !important;
+}
+
+html.forlabs-menu-header .forlabs-header-dropdown-item:hover {
+  background: rgba(15, 141, 173, 0.12) !important;
+  color: #0f8dad !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-header-dropdown-item:hover {
+  background: rgba(56, 139, 253, 0.15) !important;
+  color: #58a6ff !important;
+}
+
+html.forlabs-menu-header .forlabs-header-dropdown-item.active {
+  font-weight: 600 !important;
+  color: #0f8dad !important;
+}
+
+html.forlabs-dark-theme.forlabs-menu-header .forlabs-header-dropdown-item.active {
+  color: #58a6ff !important;
+}
+
+html.forlabs-menu-header .forlabs-header-dropdown-icon {
+  width: 16px !important;
+  text-align: center !important;
+  font-size: 13px !important;
+}

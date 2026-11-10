@@ -902,8 +902,17 @@ html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .inp
 }
 
 /* Chat Textarea */
-html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .form-control,
-html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer textarea {
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .input-group > .form-control,
+html.forlabs-dark-theme .lm-dialog-footer .input-group > .form-control {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer textarea,
+html.forlabs-dark-theme .lm-dialog-footer textarea,
+html.forlabs-dark-theme textarea.form-control,
+html.forlabs-dark-theme textarea {
   background-color: var(--fl-bg-page) !important;
   color: var(--fl-text-bright) !important;
   border: 1px solid var(--fl-border-card) !important;

@@ -1,0 +1,668 @@
+/**
+ * Forlabs Helper — Rounded Interface Engine (Скругленный интерфейс)
+ * Converts sharp/square UI elements into modern, super-rounded and pill designs:
+ * - Oval / full-pill rounding (border-radius: 9999px) for week switcher, buttons, search bar, badges, pills
+ * - Smooth corner rounding (border-radius: 16px) for cards, schedule grid, panels, tables, dialogs, chat bubbles
+ * - Full independence and seamless coexistence with Dark Theme, UI Fixes, and all Navigation Styles
+ */
+
+/* ==========================================================================
+   1. Buttons & Interactive Controls (Full Pill / Oval Rounding)
+   ========================================================================== */
+
+/* Standalone buttons & action triggers ("Создать сайт", "Создать репозиторий", "Результат", etc.) */
+html.forlabs-rounded-interface .btn,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn,
+html.forlabs-rounded-interface .btn-default,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-default,
+html.forlabs-rounded-interface .btn-primary,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-primary,
+html.forlabs-rounded-interface .btn-success,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-success,
+html.forlabs-rounded-interface .btn-info,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-info,
+html.forlabs-rounded-interface .btn-warning,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-warning,
+html.forlabs-rounded-interface .btn-danger,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-danger,
+html.forlabs-rounded-interface .btn-sm,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-sm,
+html.forlabs-rounded-interface .btn-xs,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-xs,
+html.forlabs-rounded-interface .btn-lg,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-lg {
+  border-radius: 9999px !important;
+}
+
+/* Button & Link Focus & Click Highlights (Eliminate rectangular outline) */
+html.forlabs-rounded-interface a:focus,
+html.forlabs-rounded-interface a:active,
+html.forlabs-rounded-interface a:focus-visible,
+html.forlabs-rounded-interface .btn:focus,
+html.forlabs-rounded-interface .btn:active,
+html.forlabs-rounded-interface .btn:focus-visible,
+html.forlabs-rounded-interface button:focus,
+html.forlabs-rounded-interface button:active,
+html.forlabs-rounded-interface button:focus-visible,
+html.forlabs-rounded-interface [role="button"]:focus,
+html.forlabs-rounded-interface [role="button"]:active {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Week Switcher & Button Groups (Oval pill container with seamless curved ends) */
+html.forlabs-rounded-interface .btn-group,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group {
+  border-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .btn-group > .btn,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group > .btn {
+  border-radius: 0 !important;
+}
+
+html.forlabs-rounded-interface .btn-group > .btn:first-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group > .btn:first-child {
+  border-top-left-radius: 9999px !important;
+  border-bottom-left-radius: 9999px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  padding-left: 16px !important;
+}
+
+html.forlabs-rounded-interface .btn-group > .btn:last-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group > .btn:last-child {
+  border-top-right-radius: 9999px !important;
+  border-bottom-right-radius: 9999px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  padding-right: 16px !important;
+}
+
+html.forlabs-rounded-interface .btn-group > .btn:only-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group > .btn:only-child {
+  border-radius: 9999px !important;
+}
+
+/* Vertical Button Groups */
+html.forlabs-rounded-interface .btn-group-vertical > .btn:first-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group-vertical > .btn:first-child {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+html.forlabs-rounded-interface .btn-group-vertical > .btn:last-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .btn-group-vertical > .btn:last-child {
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+/* Global Search Bar (Full-pill oval) */
+html.forlabs-rounded-interface #global-search-input-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes #global-search-input-control,
+html.forlabs-rounded-interface .lm-global-search .lm-search-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-global-search .lm-search-control,
+html.forlabs-rounded-interface .lm-global-search .lm-search-control .form-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-global-search .lm-search-control .form-control,
+html.forlabs-rounded-interface .lm-panel .lm-container .lm-container-header .lm-global-search .lm-search-control .form-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-panel .lm-container .lm-container-header .lm-global-search .lm-search-control .form-control {
+  border-radius: 9999px !important;
+}
+
+/* Search Results Popup */
+html.forlabs-rounded-interface .lm-search-results,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-search-results,
+html.forlabs-rounded-interface .lm-panel .lm-container .lm-search-results,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-panel .lm-container .lm-search-results {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* ui-select Dropdown Match Button & Search Input */
+html.forlabs-rounded-interface .ui-select-bootstrap > .ui-select-match > .btn,
+html.forlabs-rounded-interface.forlabs-ui-fixes .ui-select-bootstrap > .ui-select-match > .btn {
+  border-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .ui-select-bootstrap .form-control.ui-select-search,
+html.forlabs-rounded-interface.forlabs-ui-fixes .ui-select-bootstrap .form-control.ui-select-search {
+  border-radius: 9999px !important;
+}
+
+/* Badges, Labels, Tags & Chips */
+html.forlabs-rounded-interface .badge,
+html.forlabs-rounded-interface.forlabs-ui-fixes .badge,
+html.forlabs-rounded-interface .label,
+html.forlabs-rounded-interface.forlabs-ui-fixes .label {
+  border-radius: 9999px !important;
+  padding: 4px 10px !important;
+}
+
+/* Course & Semester Selection Tabs ("2 курс 3 семестр", etc.)
+   Top two corners keep smooth rounding (14px), bottom two corners are strictly straight (0px). */
+html.forlabs-rounded-interface .lm-tabs_classic .lm-tab-container .lm-tab-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs_classic .lm-tab-container .lm-tab-item,
+html.forlabs-rounded-interface .lm-tabs_classic .lm-tab-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs_classic .lm-tab-item,
+html.forlabs-rounded-interface .lm-tabs_classic .lm-tab-container .lm-tab-item.active,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs_classic .lm-tab-container .lm-tab-item.active {
+  border-top-left-radius: 14px !important;
+  border-top-right-radius: 14px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-radius: 14px 14px 0 0 !important;
+  margin-right: 4px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Subtabs Active Highlight Indicator ("Мои предметы", "Информация", etc.)
+   Original flat horizontal turquoise line, with rounded left and right end caps (pill line). */
+html.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-item,
+html.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item {
+  border-radius: 0 !important;
+}
+
+html.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active,
+html.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active {
+  border-bottom: none !important;
+  position: relative !important;
+  border-radius: 0 !important;
+}
+
+html.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background-color: #0c7087 !important;
+  border-radius: 4px !important;
+}
+
+html.forlabs-dark-theme.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html.forlabs-dark-theme.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html.forlabs-dark-theme.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after,
+html.forlabs-dark-theme.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after {
+  background-color: #0f8dad !important;
+}
+
+/* Form Single-Line Inputs */
+html.forlabs-rounded-interface .form-control:not(textarea),
+html.forlabs-rounded-interface.forlabs-ui-fixes .form-control:not(textarea),
+html.forlabs-rounded-interface .input-group-addon,
+html.forlabs-rounded-interface.forlabs-ui-fixes .input-group-addon {
+  border-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .input-group .form-control:first-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .input-group .form-control:first-child {
+  border-top-left-radius: 9999px !important;
+  border-bottom-left-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .input-group .form-control:last-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .input-group .form-control:last-child {
+  border-top-right-radius: 9999px !important;
+  border-bottom-right-radius: 9999px !important;
+}
+
+/* Dropdown Menus & Choices */
+html.forlabs-rounded-interface .dropdown-menu,
+html.forlabs-rounded-interface.forlabs-ui-fixes .dropdown-menu,
+html.forlabs-rounded-interface .ui-select-choices.dropdown-menu,
+html.forlabs-rounded-interface.forlabs-ui-fixes .ui-select-choices.dropdown-menu,
+html.forlabs-rounded-interface .ui-select-no-choice.dropdown-menu,
+html.forlabs-rounded-interface.forlabs-ui-fixes .ui-select-no-choice.dropdown-menu {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  padding: 6px !important;
+}
+
+html.forlabs-rounded-interface .dropdown-menu > li > a,
+html.forlabs-rounded-interface.forlabs-ui-fixes .dropdown-menu > li > a {
+  border-radius: 8px !important;
+}
+
+/* ==========================================================================
+   2. Cards, Panels, Tables & Grids (16px Corner Rounding)
+   ========================================================================== */
+
+/* Details View Cards (.lm-details, .lm-details-index):
+   - "Предметы" (Дисциплина, баллы, преподаватель)
+   - "Информация" (ФИО студента, группа, статус)
+   - "Правила хостинга" (Правила и условия сервиса)
+   - "Задания" (Описание задания и детали)
+   - "Профиль" (Данные учетной записи) */
+html.forlabs-rounded-interface .lm-details,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-details,
+html.forlabs-rounded-interface .lm-details-index,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-details-index,
+html.forlabs-rounded-interface .lm-form,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-form,
+html.forlabs-rounded-interface .lm-subform,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-subform,
+html.forlabs-rounded-interface .webinar-panel,
+html.forlabs-rounded-interface.forlabs-ui-fixes .webinar-panel,
+html.forlabs-rounded-interface .webinar-popup__panel,
+html.forlabs-rounded-interface.forlabs-ui-fixes .webinar-popup__panel,
+html.forlabs-rounded-interface .passing-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .passing-item,
+html.forlabs-rounded-interface .test-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .test-item {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Course Curriculum Test Window ("Тест программы курса"):
+   - Outer question card (.passing-item) holds the 16px corner radius
+   - Inner question and answer sections seamlessly conform to card boundaries
+   - Concentric 8-10px inner answer choices and code samples (R_inner = R_outer - padding) */
+html.forlabs-rounded-interface .passing-item__question,
+html.forlabs-rounded-interface.forlabs-ui-fixes .passing-item__question {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+html.forlabs-rounded-interface .passing-item__answer,
+html.forlabs-rounded-interface.forlabs-ui-fixes .passing-item__answer {
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+html.forlabs-rounded-interface .passing-item__sample pre,
+html.forlabs-rounded-interface.forlabs-ui-fixes .passing-item__sample pre {
+  border-radius: 8px !important;
+}
+
+html.forlabs-rounded-interface .answer-items,
+html.forlabs-rounded-interface.forlabs-ui-fixes .answer-items {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+html.forlabs-rounded-interface .answer-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .answer-item {
+  border-radius: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+html.forlabs-rounded-interface .passing-item__answer input.form-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes .passing-item__answer input.form-control {
+  border-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .passing-box,
+html.forlabs-rounded-interface.forlabs-ui-fixes .passing-box {
+  border-radius: 3px !important;
+}
+
+html.forlabs-rounded-interface .lm-dialog-exam .progress,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-exam .progress {
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+}
+
+html.forlabs-rounded-interface .lm-dialog-exam .progress-bar,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-exam .progress-bar {
+  border-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .lm-details > :first-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-details > :first-child {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+html.forlabs-rounded-interface .lm-details > :last-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-details > :last-child {
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+/* Schedule Grid Outer Corners ("Расписание") */
+html.forlabs-rounded-interface .schedule-grid,
+html.forlabs-rounded-interface.forlabs-ui-fixes .schedule-grid,
+html.forlabs-rounded-interface .schedule-grid .table,
+html.forlabs-rounded-interface.forlabs-ui-fixes .schedule-grid .table {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Profile Cards ("Пользователь", "Расписание звонков") & General Cards */
+html.forlabs-rounded-interface .lm-cards .lm-card,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-cards .lm-card,
+html.forlabs-rounded-interface .lm-card,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-card {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Info Panels:
+   Standalone info panels are rounded 16px cards.
+   When nested inside .lm-index or .lm-grid (e.g. "Активных вебинаров нет" in Webinars or Scoring),
+   duplicate nested card borders/radii are eliminated to strictly uphold the concentric inner/outer radius rule. */
+html.forlabs-rounded-interface .lm-info-panel:not(.lm-index .lm-info-panel):not(.lm-grid .lm-info-panel),
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-info-panel:not(.lm-index .lm-info-panel):not(.lm-grid .lm-info-panel),
+html.forlabs-rounded-interface .lm-info-panel-with-icon-grid:not(.lm-index .lm-info-panel):not(.lm-grid .lm-info-panel),
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-info-panel-with-icon-grid:not(.lm-index .lm-info-panel):not(.lm-grid .lm-info-panel),
+html.forlabs-rounded-interface .lm-info-panel-with-icon-image:not(.lm-index .lm-info-panel):not(.lm-grid .lm-info-panel),
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-info-panel-with-icon-image:not(.lm-index .lm-info-panel):not(.lm-grid .lm-info-panel) {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+html.forlabs-rounded-interface .lm-index .lm-info-panel,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-index .lm-info-panel,
+html.forlabs-rounded-interface .lm-grid .lm-info-panel,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid .lm-info-panel {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 40px 20px !important;
+}
+
+/* Data Grids, Card Containers & Table Wrapper Cards:
+   - "Группа" (список предметов)
+   - "Хостинг сайтов" (список сайтов, правила хоста)
+   - "Репозитории" (таблица репозиториев)
+   - "Предметы" и "Задания"
+   - "Программа курса" и "Тесты"
+   The outer card container (.lm-index, .lm-grid, .panel) holds the 16px corner radius and clips content. */
+html.forlabs-rounded-interface .lm-index,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-index,
+html.forlabs-rounded-interface .lm-grid,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid,
+html.forlabs-rounded-interface .panel,
+html.forlabs-rounded-interface.forlabs-ui-fixes .panel {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Tables inside container cards (.lm-index, .lm-grid):
+   Strictly conform to the concentric inner/outer radius principle (R_inner = R_outer - padding).
+   Since the table sits flush against the outer container edges, the container's overflow: hidden
+   smoothly and cleanly clips the header and footer corners.
+   The table headers (th) and rows (tr/td) must NOT have independent internal rounded corners,
+   which prevents corner gaps and disconnected floating capsule headers. */
+html.forlabs-rounded-interface .lm-index .table,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-index .table,
+html.forlabs-rounded-interface .lm-grid .table,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid .table,
+html.forlabs-rounded-interface .table {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  border-radius: 0 !important;
+}
+
+html.forlabs-rounded-interface .table > thead > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table > thead > tr > th,
+html.forlabs-rounded-interface .table > tbody > tr > td,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table > tbody > tr > td,
+html.forlabs-rounded-interface .table > tfoot > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table > tfoot > tr > th,
+html.forlabs-rounded-interface .table > tfoot > tr > td,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table > tfoot > tr > td,
+html.forlabs-rounded-interface .table-bordered > thead > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table-bordered > thead > tr > th,
+html.forlabs-rounded-interface .table-bordered > tbody > tr > td,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table-bordered > tbody > tr > td {
+  border-radius: 0 !important;
+}
+
+/* Table Headers & Footers: Remove grey strip in Rounded Interface (Light & Dark themes)
+   Allows table header row to seamlessly blend into the rounded card container */
+html.forlabs-rounded-interface .lm-grid table.table > thead > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid table.table > thead > tr > th,
+html.forlabs-rounded-interface .lm-index table.table > thead > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-index table.table > thead > tr > th,
+html.forlabs-rounded-interface .table > thead > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table > thead > tr > th,
+html.forlabs-rounded-interface .table-bordered > thead > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .table-bordered > thead > tr > th,
+html.forlabs-rounded-interface .lm-grid table.table > tfoot > tr > th,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid table.table > tfoot > tr > th,
+html.forlabs-rounded-interface .lm-grid table.table > tfoot > tr > td,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid table.table > tfoot > tr > td {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html.forlabs-rounded-interface .lm-grid table.table > thead > tr > th.lm-grid-sortable:hover,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid table.table > thead > tr > th.lm-grid-sortable:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+html.forlabs-dark-theme.forlabs-rounded-interface .lm-grid table.table > thead > tr > th.lm-grid-sortable:hover,
+html.forlabs-dark-theme.forlabs-rounded-interface.forlabs-ui-fixes .lm-grid table.table > thead > tr > th.lm-grid-sortable:hover {
+  background-color: var(--fl-bg-hover) !important;
+}
+
+/* Standalone tables (outside .lm-index / .lm-grid): self-contained rounded card */
+html.forlabs-rounded-interface .table-bordered:not(.lm-index .table):not(.lm-grid .table) {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Alerts, Notifications & Score/Rating Banners ("Итоговый рейтинг: ... баллов", warning/success alerts) */
+html.forlabs-rounded-interface .alert,
+html.forlabs-rounded-interface.forlabs-ui-fixes .alert,
+html.forlabs-rounded-interface .alert-success,
+html.forlabs-rounded-interface.forlabs-ui-fixes .alert-success,
+html.forlabs-rounded-interface .alert-info,
+html.forlabs-rounded-interface.forlabs-ui-fixes .alert-info,
+html.forlabs-rounded-interface .alert-warning,
+html.forlabs-rounded-interface.forlabs-ui-fixes .alert-warning,
+html.forlabs-rounded-interface .alert-danger,
+html.forlabs-rounded-interface.forlabs-ui-fixes .alert-danger,
+html.forlabs-rounded-interface .well,
+html.forlabs-rounded-interface.forlabs-ui-fixes .well {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Toast Notifications ("Фотография успешно загружена", "Нет соединения с сервером" и др.)
+   Super-rounded full-pill oval */
+html.forlabs-rounded-interface #toast-container > div,
+html.forlabs-rounded-interface.forlabs-ui-fixes #toast-container > div,
+html.forlabs-rounded-interface .toast,
+html.forlabs-rounded-interface.forlabs-ui-fixes .toast,
+html.forlabs-rounded-interface .toast-success,
+html.forlabs-rounded-interface.forlabs-ui-fixes .toast-success,
+html.forlabs-rounded-interface .toast-warning,
+html.forlabs-rounded-interface.forlabs-ui-fixes .toast-warning,
+html.forlabs-rounded-interface .toast-error,
+html.forlabs-rounded-interface.forlabs-ui-fixes .toast-error,
+html.forlabs-rounded-interface .toast-info,
+html.forlabs-rounded-interface.forlabs-ui-fixes .toast-info {
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  padding-left: 50px !important;
+  padding-right: 25px !important;
+}
+
+html.forlabs-rounded-interface #toast-container .toast-progress,
+html.forlabs-rounded-interface.forlabs-ui-fixes #toast-container .toast-progress {
+  border-radius: 9999px !important;
+}
+
+/* List Groups & Course Syllabus / Chapter Items */
+html.forlabs-rounded-interface .list-group,
+html.forlabs-rounded-interface.forlabs-ui-fixes .list-group {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+html.forlabs-rounded-interface .list-group-item:first-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .list-group-item:first-child {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+html.forlabs-rounded-interface .list-group-item:last-child,
+html.forlabs-rounded-interface.forlabs-ui-fixes .list-group-item:last-child {
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+/* ==========================================================================
+   3. Modal Dialogs, Chat Messages & Task Responses
+   ========================================================================== */
+
+/* Modal Dialog Window & Backdrops */
+html.forlabs-rounded-interface .modal-content,
+html.forlabs-rounded-interface.forlabs-ui-fixes .modal-content,
+html.forlabs-rounded-interface .lm-dialog,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog,
+html.forlabs-rounded-interface .lm-dialog-content,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-content {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Message Input Textarea & Multiline Form Controls */
+html.forlabs-rounded-interface textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes textarea,
+html.forlabs-rounded-interface textarea.form-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes textarea.form-control,
+html.forlabs-rounded-interface .form-group textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .form-group textarea,
+html.forlabs-rounded-interface .form-control textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .form-control textarea,
+html.forlabs-rounded-interface .lm-dialog textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog textarea,
+html.forlabs-rounded-interface .lm-dialog-footer textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-footer textarea,
+html.forlabs-rounded-interface .task-responses textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses textarea,
+html.forlabs-rounded-interface .task-response-form textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-response-form textarea {
+  border-radius: 14px !important;
+  padding: 10px 14px !important;
+}
+
+/* Chat Message Bubbles:
+   Strict adherence to consecutive message grouping rules.
+   When a user sends multiple messages in sequence:
+   - First message has rounded top (16px), flat bottom (0px) where it touches the next message
+   - Middle messages have flat top and flat bottom (0px)
+   - Last message has flat top (0px), rounded bottom (16px)
+   - Single message (only message from user) has all 4 corners rounded (16px). */
+
+/* Single message (or default bubble): 16px rounding on all corners */
+html.forlabs-rounded-interface .task-responses .task-response,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response,
+html.forlabs-rounded-interface .task-responses .task-response_first.task-response_last,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response_first.task-response_last {
+  border-radius: 16px !important;
+}
+
+/* First message of a sequence: rounded top, straight bottom */
+html.forlabs-rounded-interface .task-responses .task-response_first:not(.task-response_last),
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response_first:not(.task-response_last) {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+/* Middle message of a sequence: straight top and straight bottom */
+html.forlabs-rounded-interface .task-responses .task-response_middle,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response_middle {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Last message of a sequence: straight top, rounded bottom */
+html.forlabs-rounded-interface .task-responses .task-response_last:not(.task-response_first),
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response_last:not(.task-response_first) {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+/* User Avatars (Perfect Circles) */
+html.forlabs-rounded-interface .task-responses .task-response__avatar,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response__avatar,
+html.forlabs-rounded-interface .task-responses .task-response__avatar img,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response__avatar img,
+html.forlabs-rounded-interface .lm-avatar,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-avatar,
+html.forlabs-rounded-interface .lm-avatar img,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-avatar img,
+html.forlabs-rounded-interface .img-circle,
+html.forlabs-rounded-interface.forlabs-ui-fixes .img-circle,
+html.forlabs-rounded-interface .lm-control-bar-item > img,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-control-bar-item > img {
+  border-radius: 50% !important;
+}
+
+/* Chat Message Date Pills */
+html.forlabs-rounded-interface .task-responses .task-response__date,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response__date {
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+}
+
+/* Chat Message Attached Files:
+   Concentric radius rule (R_inner = R_outer - padding):
+   File card has 8px radius matching bubble interior, image thumbnail has 4px radius. */
+html.forlabs-rounded-interface .task-responses .task-response__files .list-group-item,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response__files .list-group-item {
+  border-radius: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+html.forlabs-rounded-interface .task-responses .task-response__files .media-left img,
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response__files .media-left img,
+html.forlabs-rounded-interface .task-responses .task-response__files .media-left [class*="lm-media-type"],
+html.forlabs-rounded-interface.forlabs-ui-fixes .task-responses .task-response__files .media-left [class*="lm-media-type"] {
+  border-radius: 4px !important;
+}
+
+/* Chat Input Bar in Task Response Dialog Footer */
+html.forlabs-rounded-interface .lm-dialog-chat .lm-dialog-footer .input-group,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-chat .lm-dialog-footer .input-group {
+  overflow: visible !important;
+  border: none !important;
+}
+
+html.forlabs-rounded-interface .lm-dialog-chat .lm-dialog-footer .input-group-addon,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-chat .lm-dialog-footer .input-group-addon {
+  border-radius: 9999px !important;
+}
+
+html.forlabs-rounded-interface .lm-dialog-chat .lm-dialog-footer .input-group > .form-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-chat .lm-dialog-footer .input-group > .form-control,
+html.forlabs-rounded-interface .lm-dialog-footer .input-group > .form-control,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-footer .input-group > .form-control {
+  border-radius: 14px !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html.forlabs-rounded-interface .lm-dialog-chat .lm-dialog-footer textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-chat .lm-dialog-footer textarea,
+html.forlabs-rounded-interface .lm-dialog-footer textarea,
+html.forlabs-rounded-interface.forlabs-ui-fixes .lm-dialog-footer textarea {
+  border-radius: 14px !important;
+}

@@ -1,0 +1,410 @@
+/* ==========================================================================
+   Forlabs Helper — UI Fixes Module
+   Scoped strictly under html.forlabs-ui-fixes
+   Fixes native design bugs in both Light and Dark themes.
+   ========================================================================== */
+
+/* 1. ui-select Dropdown (Schedule selector, etc.)
+   - Fixes input row width shrinking & vertical height collapse on open
+   - Synchronizes button & search input heights seamlessly (40px)
+   - Preserves caret flag visibility at exact coordinates (top: 50%, right: 11px) */
+
+html.forlabs-ui-fixes .ui-select-bootstrap > .ui-select-match > .btn {
+  height: 40px !important;
+  min-height: 40px !important;
+  line-height: 22px !important;
+  font-size: 16px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  padding-left: 12px !important;
+  padding-right: 32px !important;
+  box-sizing: border-box !important;
+}
+
+html.forlabs-ui-fixes .ui-select-bootstrap .form-control.ui-select-search,
+html.forlabs-ui-fixes .ui-select-bootstrap.open .form-control.ui-select-search {
+  height: 40px !important;
+  min-height: 40px !important;
+  line-height: 22px !important;
+  font-size: 16px !important;
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+  padding-left: 12px !important;
+  padding-right: 32px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* Caret flag in open state matching closed state placement exactly */
+html.forlabs-ui-fixes .ui-select-bootstrap.open::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  margin-top: -2px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 4px solid #333333;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Upward direction support */
+html.forlabs-ui-fixes .ui-select-bootstrap.open.direction-up::after {
+  border-top: 0;
+  border-bottom: 4px solid #333333;
+}
+
+/* Dark theme caret color match */
+html.forlabs-dark-theme.forlabs-ui-fixes .ui-select-bootstrap.open::after {
+  border-top-color: var(--fl-text-main, #d1d5db) !important;
+}
+
+html.forlabs-dark-theme.forlabs-ui-fixes .ui-select-bootstrap.open.direction-up::after {
+  border-bottom-color: var(--fl-text-main, #d1d5db) !important;
+}
+
+/* ==========================================================================
+   2. Content Width Alignment (Breadcrumbs & Tabs Lines)
+   Removes negative horizontal margins (-15px) from breadcrumb header lines
+   and subtab separator lines so they align flush with page content (tables,
+   cards, grids) instead of overhanging beyond them.
+   ========================================================================== */
+
+/* Breadcrumbs line (e.g. "Расписание", stream headers, etc.) */
+html.forlabs-ui-fixes .lm-panel .lm-container .lm-breadcrumbs,
+html.forlabs-ui-fixes .lm-container .lm-breadcrumbs {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Subtabs line (e.g. "Вебинары / Прошедшие вебинары", course/semester tabs, etc.) */
+html.forlabs-ui-fixes .lm-tabs {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* ==========================================================================
+   3. Webinars Top Header Normalization & Separator Line
+   Matches the "Вебинары" tab title font size, weight, line-height, and
+   horizontal separator line to the standard breadcrumbs headers in other
+   sections ("Расписание", "Хостинг сайтов", "Учёба").
+   ========================================================================== */
+
+html.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"]:not([ng-if*="==="]) > .lm-header,
+html.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"] > .lm-header,
+html.forlabs-ui-fixes ng-view > div > div > .lm-header:first-child {
+  font-size: 16px !important;
+  line-height: 1.428571429 !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+}
+
+/* Horizontal separator line under "Вебинары" header matching other tabs */
+html.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"]:not([ng-if*="==="]) > .lm-header::after,
+html.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"] > .lm-header::after,
+html.forlabs-ui-fixes ng-view > div > div > .lm-header:first-child::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: 10 !important;
+  height: 1px !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Dark theme colors for header text & separator line */
+html.forlabs-dark-theme.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"]:not([ng-if*="==="]) > .lm-header,
+html.forlabs-dark-theme.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"] > .lm-header,
+html.forlabs-dark-theme.forlabs-ui-fixes ng-view > div > div > .lm-header:first-child {
+  color: var(--fl-text-bright, #fff) !important;
+}
+
+html.forlabs-dark-theme.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"]:not([ng-if*="==="]) > .lm-header::after,
+html.forlabs-dark-theme.forlabs-ui-fixes [ng-if*="currentTab.id"][ng-if*="webinar"] > .lm-header::after,
+html.forlabs-dark-theme.forlabs-ui-fixes ng-view > div > div > .lm-header:first-child::after {
+  background: #363c44 !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   4. Sharp Square Corners (Remove border-radius from specified UI elements)
+   Removes rounded corners across all elements shown in user specifications:
+   - Schedule dropdown toggle & search input
+   - Week switcher buttons & all button types / button groups
+   - Global search input bar & search results
+   - Subtabs (e.g. "2 курс 3 семестр" classic tabs)
+   - Info panels & empty-state notification blocks ("Активных вебинаров нет")
+   - Action buttons ("Результат", etc.)
+   - Menu items, badges, stream / group cards, and inputs
+   ========================================================================== */
+
+/* Buttons & Button Groups (Week switchers, action buttons, etc.) */
+html.forlabs-ui-fixes .btn,
+html.forlabs-ui-fixes .btn-group > .btn,
+html.forlabs-ui-fixes .btn-group-vertical > .btn,
+html.forlabs-ui-fixes .btn-group > .btn:first-child,
+html.forlabs-ui-fixes .btn-group > .btn:last-child,
+html.forlabs-ui-fixes .btn-sm,
+html.forlabs-ui-fixes .btn-xs,
+html.forlabs-ui-fixes .btn-lg,
+html.forlabs-ui-fixes .btn-default,
+html.forlabs-ui-fixes .btn-primary,
+html.forlabs-ui-fixes .btn-success,
+html.forlabs-ui-fixes .btn-info,
+html.forlabs-ui-fixes .btn-warning,
+html.forlabs-ui-fixes .btn-danger {
+  border-radius: 0 !important;
+}
+
+/* Button & Link Focus / Click Highlights (Скрытие белого прямоугольника обводки при нажатии на любые кнопки и ссылки) */
+html.forlabs-ui-fixes a:focus,
+html.forlabs-ui-fixes a:active,
+html.forlabs-ui-fixes a:focus-visible,
+html.forlabs-ui-fixes .btn:focus,
+html.forlabs-ui-fixes .btn:active,
+html.forlabs-ui-fixes .btn:active:focus,
+html.forlabs-ui-fixes .btn.active:focus,
+html.forlabs-ui-fixes .btn.focus,
+html.forlabs-ui-fixes .btn:active.focus,
+html.forlabs-ui-fixes .btn.active.focus,
+html.forlabs-ui-fixes .btn:focus-visible,
+html.forlabs-ui-fixes button:focus,
+html.forlabs-ui-fixes button:active,
+html.forlabs-ui-fixes button:focus-visible,
+html.forlabs-ui-fixes [type="button"]:focus,
+html.forlabs-ui-fixes [type="button"]:active,
+html.forlabs-ui-fixes [type="submit"]:focus,
+html.forlabs-ui-fixes [type="submit"]:active,
+html.forlabs-ui-fixes [type="reset"]:focus,
+html.forlabs-ui-fixes [type="reset"]:active,
+html.forlabs-ui-fixes [role="button"]:focus,
+html.forlabs-ui-fixes [role="button"]:active,
+html.forlabs-ui-fixes [role="button"]:focus-visible,
+html.forlabs-ui-fixes .ui-select-match > .btn:focus,
+html.forlabs-ui-fixes .ui-select-match > .btn:active,
+html.forlabs-ui-fixes .lm-tab-item:focus,
+html.forlabs-ui-fixes .lm-tab-item:active,
+html.forlabs-ui-fixes .lm-control-bar-item:focus,
+html.forlabs-ui-fixes .lm-control-bar-item:active,
+html.forlabs-ui-fixes .lm-menu a:focus,
+html.forlabs-ui-fixes .lm-menu a:active,
+html.forlabs-ui-fixes .lm-menu a:focus-visible,
+html.forlabs-ui-fixes .lm-menu-list-item a:focus,
+html.forlabs-ui-fixes .lm-menu-list-item a:active,
+html.forlabs-ui-fixes .lm-menu-sub-list-item a:focus,
+html.forlabs-ui-fixes .lm-menu-sub-list-item a:active,
+html.forlabs-ui-fixes .table a:focus,
+html.forlabs-ui-fixes .table a:active,
+html.forlabs-ui-fixes .table a:focus-visible,
+html.forlabs-ui-fixes .lm-grid a:focus,
+html.forlabs-ui-fixes .lm-grid a:active,
+html.forlabs-ui-fixes .lm-grid a:focus-visible,
+html.forlabs-ui-fixes .lm-breadcrumb-item a:focus,
+html.forlabs-ui-fixes .lm-breadcrumb-item a:active,
+html.forlabs-ui-fixes a.btn:focus,
+html.forlabs-ui-fixes a.btn:active,
+html.forlabs-ui-fixes a.btn:focus-visible,
+html.forlabs-ui-fixes .close:focus,
+html.forlabs-ui-fixes .close:active,
+html.forlabs-ui-fixes .pointer:focus,
+html.forlabs-ui-fixes .pointer:active {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* ui-select Dropdowns & Choices */
+html.forlabs-ui-fixes .ui-select-bootstrap > .ui-select-match > .btn,
+html.forlabs-ui-fixes .ui-select-bootstrap .form-control.ui-select-search,
+html.forlabs-ui-fixes .ui-select-bootstrap.open .form-control.ui-select-search,
+html.forlabs-ui-fixes .ui-select-choices.dropdown-menu,
+html.forlabs-ui-fixes .ui-select-no-choice.dropdown-menu,
+html.forlabs-ui-fixes .dropdown-menu {
+  border-radius: 0 !important;
+}
+
+/* Containers and panels: disable native transitions so toggling ui-fixes is instantaneous */
+html.forlabs-ui-fixes .lm-panel .lm-container,
+html.forlabs-ui-fixes .lm-panel .lm-container-header,
+html.forlabs-ui-fixes .lm-panel .lm-container .lm-container-header,
+html.forlabs-ui-fixes .lm-panel .lm-menu {
+  transition: none !important;
+}
+
+/* Global Search Input & Results (Sharp corners, permanent full width & zero animations) */
+html.forlabs-ui-fixes .lm-global-search,
+html.forlabs-ui-fixes .lm-global-search *,
+html.forlabs-ui-fixes .lm-search-control,
+html.forlabs-ui-fixes .lm-search-control * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  transition: none !important;
+  -webkit-animation: none !important;
+  animation: none !important;
+}
+
+html.forlabs-ui-fixes .lm-global-search .lm-search-control,
+html.forlabs-ui-fixes .lm-panel .lm-container .lm-container-header .lm-global-search .lm-search-control {
+  width: 360px !important;
+  max-width: 100% !important;
+  transition: none !important;
+}
+
+html.forlabs-ui-fixes #global-search-input-control,
+html.forlabs-ui-fixes .lm-global-search .lm-search-control .form-control,
+html.forlabs-ui-fixes .lm-panel .lm-container .lm-container-header .lm-global-search .lm-search-control .form-control {
+  border-radius: 0 !important;
+  width: 360px !important;
+  max-width: 100% !important;
+  opacity: 1 !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  transition: none !important;
+}
+
+html.forlabs-ui-fixes .lm-search-results,
+html.forlabs-ui-fixes .lm-panel .lm-container .lm-search-results {
+  border-radius: 0 !important;
+}
+
+/* Classic Subtabs ("2 курс 3 семестр", etc.) */
+html.forlabs-ui-fixes .lm-tabs_classic .lm-tab-container .lm-tab-item,
+html.forlabs-ui-fixes .lm-tabs_classic .lm-tab-container .lm-tab-item.active,
+html.forlabs-ui-fixes .lm-tab-item {
+  border-radius: 0 !important;
+}
+
+/* Info Panels & Empty State Blocks ("Активных вебинаров нет", etc.) */
+html.forlabs-ui-fixes .lm-info-panel,
+html.forlabs-ui-fixes .lm-info-panel-with-icon-grid,
+html.forlabs-ui-fixes .lm-info-panel-with-icon-image,
+html.forlabs-ui-fixes .lm-index,
+html.forlabs-ui-fixes .lm-cards .lm-card {
+  border-radius: 0 !important;
+}
+
+/* Sidebar Menu Items, Badges & Stream / Group Cards */
+html.forlabs-ui-fixes .lm-menu-list-item,
+html.forlabs-ui-fixes .lm-menu-list-item a,
+html.forlabs-ui-fixes .lm-menu-sub-list-item,
+html.forlabs-ui-fixes .lm-menu-sub-list-item a,
+html.forlabs-ui-fixes .badge,
+html.forlabs-ui-fixes .label,
+html.forlabs-ui-fixes .list-group-item,
+html.forlabs-ui-fixes .list-group-item:first-child,
+html.forlabs-ui-fixes .list-group-item:last-child,
+html.forlabs-ui-fixes .schedule-entry,
+html.forlabs-ui-fixes .schedule-entry__streams li,
+html.forlabs-ui-fixes .form-control,
+html.forlabs-ui-fixes .input-group-addon {
+  border-radius: 0 !important;
+}
+
+/* Chat & Task Dialog (Message bubbles, date badges, attachments) */
+html.forlabs-ui-fixes .task-responses .task-response,
+html.forlabs-ui-fixes .task-responses .task-response_first,
+html.forlabs-ui-fixes .task-responses .task-response_last,
+html.forlabs-ui-fixes .task-responses .task-response_middle,
+html.forlabs-ui-fixes .task-responses .task-response__user_own .task-response,
+html.forlabs-ui-fixes .task-responses .task-response__user_own .task-response_last,
+html.forlabs-ui-fixes .task-responses .task-response__date,
+html.forlabs-ui-fixes .task-responses .task-response__time,
+html.forlabs-ui-fixes .task-responses .task-response__files,
+html.forlabs-ui-fixes .task-responses .task-response__files .list-group-item {
+  border-radius: 0 !important;
+}
+
+/* User Avatars & Profile Pictures (Chat, header, comments) */
+html.forlabs-ui-fixes .task-responses .task-response__avatar,
+html.forlabs-ui-fixes .task-responses .task-response__avatar img,
+html.forlabs-ui-fixes .lm-avatar,
+html.forlabs-ui-fixes .lm-avatar img,
+html.forlabs-ui-fixes .lm-control-bar-item > img,
+html.forlabs-ui-fixes .img-circle {
+  border-radius: 0 !important;
+}
+
+/* ==========================================================================
+   5. Header & Sidebar Elevation Shadows
+   Matches the subtle card drop-shadow elevation across the header and sidebar:
+   - Header: gentle downward elevation shadow (not protruding or overly dark)
+   - Sidebar: sleek rightward elevation shadow casting over header and content
+   - Supports both Light and Dark themes
+   ========================================================================== */
+
+/* Top Header Bar Shadow & Border */
+html.forlabs-ui-fixes .lm-container .lm-container-header,
+html.forlabs-ui-fixes .lm-panel .lm-container-header {
+  border-bottom: 1px solid rgba(127, 127, 127, 0.15) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+  z-index: 10 !important;
+}
+
+html.forlabs-dark-theme.forlabs-ui-fixes .lm-container .lm-container-header,
+html.forlabs-dark-theme.forlabs-ui-fixes .lm-panel .lm-container-header {
+  border-bottom: 1px solid var(--fl-border-card) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22) !important;
+}
+
+/* Sidebar Menu Shadow (Desktop visible and collapsed states) */
+html.forlabs-ui-fixes .lm-panel .lm-menu,
+html.forlabs-ui-fixes .lm-panel.lm-menu-desktop-visible .lm-menu,
+html.forlabs-ui-fixes .lm-panel.lm-menu-desktop-collapsed .lm-menu {
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.12) !important;
+  z-index: 200 !important;
+}
+
+html.forlabs-dark-theme.forlabs-ui-fixes .lm-panel .lm-menu,
+html.forlabs-dark-theme.forlabs-ui-fixes .lm-panel.lm-menu-desktop-visible .lm-menu,
+html.forlabs-dark-theme.forlabs-ui-fixes .lm-panel.lm-menu-desktop-collapsed .lm-menu {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.35) !important;
+  z-index: 200 !important;
+}
+
+/* Hide sidebar shadow only on narrow mobile viewports when collapsed */
+@media (max-width: 768px) {
+  html.forlabs-ui-fixes .lm-panel.lm-menu-mobile-collapsed .lm-menu {
+    box-shadow: none !important;
+  }
+}
+
+/* Ensure global search results remain above header shadow */
+html.forlabs-ui-fixes .lm-panel .lm-container .lm-search-results {
+  z-index: 100 !important;
+}
+
+/* Toast Notifications & Alert Banners (Strict 0px straight corners in UI Fixes) */
+html.forlabs-ui-fixes #toast-container > div,
+html.forlabs-ui-fixes .toast,
+html.forlabs-ui-fixes .toast-success,
+html.forlabs-ui-fixes .toast-warning,
+html.forlabs-ui-fixes .toast-error,
+html.forlabs-ui-fixes .toast-info,
+html.forlabs-ui-fixes .toast-progress,
+html.forlabs-ui-fixes .alert,
+html.forlabs-ui-fixes .alert-success,
+html.forlabs-ui-fixes .alert-info,
+html.forlabs-ui-fixes .alert-warning,
+html.forlabs-ui-fixes .alert-danger,
+html.forlabs-ui-fixes .well {
+  border-radius: 0 !important;
+}
+
+
+

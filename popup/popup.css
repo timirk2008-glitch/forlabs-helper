@@ -74,6 +74,10 @@ body {
   transition: all 0.2s ease;
 }
 
+.card + .card {
+  margin-top: 8px;
+}
+
 .module-info {
   display: flex;
   align-items: center;
@@ -98,6 +102,16 @@ body {
   color: #f6c845;
 }
 
+.module-icon-wrap.active-tool {
+  background-color: rgba(15, 141, 173, 0.15);
+  color: #0f8dad;
+}
+
+.module-icon-wrap.active-tool.disabled {
+  background-color: rgba(114, 123, 136, 0.15);
+  color: #727b88;
+}
+
 .icon {
   width: 18px;
   height: 18px;
@@ -119,30 +133,88 @@ body {
   margin-top: 1px;
 }
 
-/* Future card style */
-.future-card {
-  margin-bottom: 6px;
-  opacity: 0.7;
+/* Select Card (Dropdown for Menu Style) */
+.select-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
 }
 
-.future-icon {
-  background-color: rgba(114, 123, 136, 0.15);
+.select-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: rgba(15, 141, 173, 0.15);
+  color: #0f8dad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.select-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-style-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #1a1d21;
+  color: #ffffff;
+  border: 1px solid #2d3239;
+  border-radius: 8px;
+  padding: 8px 34px 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.menu-style-select:hover {
+  border-color: #3e444d;
+  background-color: #202428;
+}
+
+.menu-style-select:focus {
+  border-color: #0f8dad;
+  background-color: #1a1d21;
+  box-shadow: 0 0 0 2px rgba(15, 141, 173, 0.25);
+}
+
+.menu-style-select option {
+  background-color: #1a1d21;
+  color: #ffffff;
+  padding: 8px 12px;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
   color: #727b88;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.badge {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 7px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-}
-
-.badge-soon {
-  background-color: rgba(114, 123, 136, 0.2);
-  color: #a0a6b2;
-  border: 1px solid #383e47;
+.select-arrow .icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* Switch */

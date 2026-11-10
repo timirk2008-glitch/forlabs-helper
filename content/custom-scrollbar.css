@@ -1,0 +1,90 @@
+/**
+ * Forlabs Helper — Custom Scrollbar Engine
+ * Transparent track with sleek, theme-adaptive thumb matching header button icons.
+ */
+
+/* ==========================================================================
+   1. WebKit / Chromium Scrollbar Pseudo-Elements
+   ========================================================================== */
+
+/* Scrollbar dimensions for window and all scrollable containers */
+html.forlabs-custom-scrollbar::-webkit-scrollbar,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: transparent !important;
+}
+
+/* Remove stepper arrows/buttons */
+html.forlabs-custom-scrollbar::-webkit-scrollbar-button,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Completely transparent track everywhere */
+html.forlabs-custom-scrollbar::-webkit-scrollbar-track,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar-track,
+html.forlabs-custom-scrollbar::-webkit-scrollbar-track-piece,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar-track-piece,
+html.forlabs-custom-scrollbar .lm-panel .lm-menu .lm-menu-inner .lm-menu-list::-webkit-scrollbar-track,
+html.forlabs-custom-scrollbar .lm-panel .lm-container .lm-breadcrumbs::-webkit-scrollbar-track,
+html.forlabs-custom-scrollbar .lm-dialog-body::-webkit-scrollbar-track {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Completely transparent corner */
+html.forlabs-custom-scrollbar::-webkit-scrollbar-corner,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar-corner {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   2. Scrollbar Thumb (Light Theme Default)
+   Color matches the header button icon in light theme (#aaa)
+   ========================================================================== */
+html.forlabs-custom-scrollbar::-webkit-scrollbar-thumb,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa !important;
+  border-radius: 10px !important;
+  border: none !important;
+  min-height: 24px !important;
+}
+
+html.forlabs-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+html.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb:hover {
+  background-color: #888888 !important;
+}
+
+/* ==========================================================================
+   3. Scrollbar Thumb (Dark Theme)
+   Color matches the header button icon in dark theme (#848c99 / var(--fl-text-muted))
+   ========================================================================== */
+html.forlabs-dark-theme.forlabs-custom-scrollbar::-webkit-scrollbar-thumb,
+html.forlabs-dark-theme.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb {
+  background-color: #848c99 !important;
+}
+
+html.forlabs-dark-theme.forlabs-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+html.forlabs-dark-theme.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb:hover {
+  background-color: #a8b2c2 !important;
+}
+
+/* ==========================================================================
+   4. Standard CSS Scrollbar Properties (Firefox / Chromium Modern Spec)
+   ========================================================================== */
+html.forlabs-custom-scrollbar,
+html.forlabs-custom-scrollbar * {
+  scrollbar-width: thin !important;
+  scrollbar-color: #aaaaaa transparent !important;
+}
+
+html.forlabs-dark-theme.forlabs-custom-scrollbar,
+html.forlabs-dark-theme.forlabs-custom-scrollbar * {
+  scrollbar-color: #848c99 transparent !important;
+}
