@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forlabs Helper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-box">
+        <svg class="app-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" fill="#0f8dad" />
+          <path d="M50 24 L82 40 L50 56 L18 40 Z" fill="#ffffff" />
+          <path d="M30 46 L30 64 C30 72 70 72 70 64 L70 46" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+          <line x1="78" y1="42" x2="78" y2="62" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+          <circle cx="78" cy="64" r="3" fill="#ffffff" />
+        </svg>
+        <div>
+          <h1 class="title">Forlabs Helper</h1>
+          <span class="subtitle">БКИ ИГУ • v1.0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Module Section -->
+    <section class="section">
+      <div class="section-title">Внешний вид</div>
+      <div class="card module-card">
+        <div class="module-info">
+          <div class="module-icon-wrap" id="theme-icon-wrap">
+            <svg id="moon-icon" class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg id="sun-icon" class="icon hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <div>
+            <div class="module-name">Тёмная тема</div>
+            <div class="module-desc">Комфортно для глаз в любое время</div>
+          </div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" aria-label="Переключить тёмную тему">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Future Modules Placeholder (Extensibility) -->
+    <section class="section">
+      <div class="section-title">Планируемые модули</div>
+      
+      <div class="card module-card future-card">
+        <div class="module-info">
+          <div class="module-icon-wrap future-icon">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <div class="module-name">Умное расписание</div>
+            <div class="module-desc">Виджет текущей и следующей пары</div>
+          </div>
+        </div>
+        <span class="badge badge-soon">Скоро</span>
+      </div>
+
+      <div class="card module-card future-card">
+        <div class="module-info">
+          <div class="module-icon-wrap future-icon">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <div class="module-name">Калькулятор БРС</div>
+            <div class="module-desc">Прогноз и расчёт баллов до автомата</div>
+          </div>
+        </div>
+        <span class="badge badge-soon">Скоро</span>
+      </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <footer class="footer">
+      <a href="https://bki.forlabs.ru/app" target="_blank" rel="noopener noreferrer" class="footer-btn">
+        <span>Открыть Личный Кабинет</span>
+        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

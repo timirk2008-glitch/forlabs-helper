@@ -1,0 +1,994 @@
+/* ==========================================================================
+   Forlabs Helper — Pure Color Replacement Dark Theme
+   Strictly recolors elements without adding new borders, lines, or radius.
+   ========================================================================== */
+
+html.forlabs-dark-theme {
+  --fl-bg-page: #141619;
+  --fl-bg-card: #1c1f24;
+  --fl-bg-header: #23272d;
+  --fl-bg-hover: #262a31;
+  --fl-bg-active: #19222c;
+  --fl-border-card: #2e333b;
+  --fl-border-table: #2a2e35;
+  --fl-border-grid: #363b44;
+  --fl-text-main: #d1d5db;
+  --fl-text-bright: #ffffff;
+  --fl-text-muted: #848c99;
+  --fl-link: #38bdf8;
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   1. Base page & Typography
+   ========================================================================== */
+html.forlabs-dark-theme,
+html.forlabs-dark-theme body {
+  background-color: var(--fl-bg-page) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme a {
+  color: var(--fl-link);
+}
+
+html.forlabs-dark-theme .text-muted {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Root landing page pale overlay & logo */
+html.forlabs-dark-theme .bg-pale {
+  background: rgba(10, 12, 16, 0.75) !important;
+}
+
+html.forlabs-dark-theme .content > a,
+html.forlabs-dark-theme .content > a:hover,
+html.forlabs-dark-theme .content > a .big-logo,
+html.forlabs-dark-theme .big-logo,
+html.forlabs-dark-theme .nav .links > a,
+html.forlabs-dark-theme .nav .links > a:hover {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* ==========================================================================
+   2. Main Containers
+   ========================================================================== */
+/* Disable native container transitions completely so toggling between dark and light is instantaneous */
+html.forlabs-dark-theme .lm-panel .lm-container,
+html.forlabs-dark-theme .lm-panel .lm-container-header,
+html.forlabs-dark-theme .lm-panel .lm-container .lm-container-header {
+  transition: none !important;
+}
+
+html.forlabs-dark-theme .lm-panel {
+  background-color: var(--fl-bg-page) !important;
+}
+
+html.forlabs-dark-theme .lm-container,
+html.forlabs-dark-theme .lm-panel .lm-container {
+  background-color: var(--fl-bg-page) !important;
+}
+
+html.forlabs-dark-theme .lm-container-content {
+  background-color: var(--fl-bg-page) !important;
+}
+
+/* Footer (Recolor existing border only) */
+html.forlabs-dark-theme .lm-container .lm-container-footer footer {
+  border-top-color: var(--fl-border-card) !important;
+  color: var(--fl-text-muted) !important;
+}
+
+/* ==========================================================================
+   3. Header Bar & Controls
+   ========================================================================== */
+html.forlabs-dark-theme .lm-container .lm-container-header {
+  background: var(--fl-bg-header) !important;
+}
+
+html.forlabs-dark-theme .lm-menu-toggle {
+  color: var(--fl-text-muted) !important;
+}
+html.forlabs-dark-theme .lm-menu-toggle:hover {
+  color: var(--fl-text-bright) !important;
+}
+
+/* Control Bar (Profile, Logout, Theme toggle) */
+html.forlabs-dark-theme .lm-container .lm-container-header .lm-control-bar {
+  background: var(--fl-bg-header) !important;
+}
+
+html.forlabs-dark-theme .lm-control-bar .lm-control-bar-item {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .lm-control-bar .lm-control-bar-item:hover {
+  color: var(--fl-text-bright) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.forlabs-dark-theme .lm-control-bar .lm-control-bar-item.active {
+  color: var(--fl-text-bright) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Global Search Input (recolor only) */
+html.forlabs-dark-theme .lm-container .lm-container-header .lm-global-search .lm-search-control .form-control {
+  background-color: var(--fl-bg-page) !important;
+  color: var(--fl-text-main) !important;
+  border-color: var(--fl-border-grid) !important;
+}
+
+html.forlabs-dark-theme .lm-search-control label {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Search Results Popup */
+html.forlabs-dark-theme .lm-container .lm-search-results {
+  background: var(--fl-bg-card) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-search-results .lm-search-result-group .lm-search-result-header {
+  background: var(--fl-bg-hover) !important;
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-search-results .lm-search-result-group .lm-search-result-items .lm-search-result-item {
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-search-results .lm-search-result-group .lm-search-result-items .lm-search-result-item:hover,
+html.forlabs-dark-theme .lm-container .lm-search-results .lm-search-result-group .lm-search-result-items .lm-search-result-item:focus {
+  background: var(--fl-bg-hover) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-search-results .lm-search-no-results {
+  color: var(--fl-text-muted) !important;
+}
+
+/* NOTE: Left sidebar (.lm-menu) is NOT styled here so it keeps its native brand green/teal color */
+
+/* ==========================================================================
+   4. Headings & Cards (.lm-card, .lm-header, .lm-index-header)
+   ========================================================================== */
+html.forlabs-dark-theme .lm-header,
+html.forlabs-dark-theme .lm-header .lm-header-content,
+html.forlabs-dark-theme .lm-index-header,
+html.forlabs-dark-theme .lm-index-header .lm-header-content,
+html.forlabs-dark-theme .lm-sub-heading {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-cards .lm-card {
+  background: var(--fl-bg-card) !important;
+  border-color: var(--fl-border-card) !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+html.forlabs-dark-theme .lm-cards .lm-card .lm-card-header {
+  border: none !important;
+}
+
+html.forlabs-dark-theme .lm-cards .lm-card .lm-card-header .lm-card-title {
+  color: var(--fl-text-bright) !important;
+}
+
+/* ==========================================================================
+   5. Tables & Grids (.lm-grid, .lm-index)
+   ========================================================================== */
+html.forlabs-dark-theme .table {
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .table > thead > tr > th {
+  color: var(--fl-text-muted) !important;
+  border-bottom-color: var(--fl-border-card) !important;
+}
+
+html.forlabs-dark-theme .table > tbody > tr > td,
+html.forlabs-dark-theme .table > tfoot > tr > td {
+  border-top-color: var(--fl-border-table) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .table-hover > tbody > tr:hover,
+html.forlabs-dark-theme .table > tbody > tr:hover {
+  background-color: var(--fl-bg-hover) !important;
+}
+
+html.forlabs-dark-theme .table-bordered,
+html.forlabs-dark-theme .table-bordered > thead > tr > th,
+html.forlabs-dark-theme .table-bordered > thead > tr > td,
+html.forlabs-dark-theme .table-bordered > tbody > tr > th,
+html.forlabs-dark-theme .table-bordered > tbody > tr > td,
+html.forlabs-dark-theme .table-bordered > tfoot > tr > th,
+html.forlabs-dark-theme .table-bordered > tfoot > tr > td {
+  border-color: var(--fl-border-card) !important;
+}
+
+/* Lamotivo Index Container & Grid Cells */
+html.forlabs-dark-theme .lm-index {
+  background: var(--fl-bg-card) !important;
+  border-color: var(--fl-border-card) !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+html.forlabs-dark-theme .lm-grid .lm-grid-actions {
+  background-color: var(--fl-bg-card) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .lm-grid table.table > thead > tr > th,
+html.forlabs-dark-theme .lm-grid table.table > thead > tr > td,
+html.forlabs-dark-theme .lm-grid table.table > tbody > tr > th,
+html.forlabs-dark-theme .lm-grid table.table > tbody > tr > td,
+html.forlabs-dark-theme .lm-grid table.table > tfoot > tr > th,
+html.forlabs-dark-theme .lm-grid table.table > tfoot > tr > td {
+  background: var(--fl-bg-card) !important;
+  color: var(--fl-text-main) !important;
+  border-color: var(--fl-border-table) !important;
+}
+
+html.forlabs-dark-theme .lm-grid table.table > thead > tr > th,
+html.forlabs-dark-theme .lm-grid table.table > tfoot > tr > th,
+html.forlabs-dark-theme .lm-grid table.table > tfoot > tr > td {
+  background-color: var(--fl-bg-hover) !important;
+  color: var(--fl-text-muted) !important;
+  border-bottom-color: var(--fl-border-card) !important;
+}
+
+html.forlabs-dark-theme .lm-grid table.table > tbody > tr:hover > td {
+  background-color: var(--fl-bg-hover) !important;
+}
+
+html.forlabs-dark-theme .lm-grid table.table td.lm-grid-empty-cell {
+  background: var(--fl-bg-card) !important;
+}
+
+html.forlabs-dark-theme .lm-grid table.table td.lm-grid-choicebox,
+html.forlabs-dark-theme .lm-grid table.table td.lm-grid-column-actions {
+  background: inherit !important;
+}
+
+html.forlabs-dark-theme .lm-toolbar {
+  background-color: var(--fl-bg-card) !important;
+}
+
+/* Info Panel (e.g. "Активных вебинаров нет") */
+html.forlabs-dark-theme .lm-info-panel {
+  background: var(--fl-bg-card) !important;
+  border-color: var(--fl-border-card) !important;
+  color: var(--fl-text-muted) !important;
+}
+
+/* Make grid/image icon above empty state text match the text color */
+html.forlabs-dark-theme .lm-info-panel:before,
+html.forlabs-dark-theme .lm-info-panel.lm-info-panel-with-icon-grid:before,
+html.forlabs-dark-theme .lm-info-panel.lm-info-panel-with-icon-image:before {
+  filter: invert(0.75) !important;
+  opacity: 0.65 !important;
+}
+
+/* Form Action Buttons bar (e.g. Profile "Сохранить") */
+html.forlabs-dark-theme .lm-form-buttons,
+html.forlabs-dark-theme .lm-form .lm-form-buttons,
+html.forlabs-dark-theme .lm-details .lm-details-footer,
+html.forlabs-dark-theme .lm-pagination {
+  background-color: var(--fl-bg-card) !important;
+  border-top-color: var(--fl-border-card) !important;
+  color: var(--fl-text-main) !important;
+}
+
+/* ==========================================================================
+   6. Breadcrumbs & Tabs
+   ========================================================================== */
+html.forlabs-dark-theme .lm-breadcrumbs {
+  background-color: transparent !important;
+}
+
+/* Make the separator line under "Расписание" and tabs light & clear */
+html.forlabs-dark-theme .lm-container .lm-breadcrumbs:after {
+  background: #363c44 !important;
+  box-shadow: none !important;
+  height: 1px !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-breadcrumbs > li.lm-breadcrumb-item {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-breadcrumbs > li.lm-breadcrumb-item.active {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-breadcrumbs > li.lm-breadcrumb-item a {
+  color: var(--fl-link) !important;
+}
+
+html.forlabs-dark-theme .lm-container .lm-breadcrumbs > li.lm-breadcrumb-actions .lm-breadcrumb-action {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Tabs */
+html.forlabs-dark-theme .lm-tabs {
+  border-bottom-color: var(--fl-border-card) !important;
+}
+
+html.forlabs-dark-theme .lm-tab-item {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .lm-tab-item:hover {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-tab-item.active {
+  color: #0f8dad !important;
+}
+
+/* Classic Tabs (e.g. selected semester in Studies) */
+html.forlabs-dark-theme .lm-tabs_classic .lm-tab-container .lm-tab-item.active,
+html.forlabs-dark-theme .lm-tabs_classic .lm-tab-item.active {
+  background: var(--fl-bg-card) !important;
+  color: var(--fl-text-bright) !important;
+  border-color: var(--fl-border-card) !important;
+}
+
+/* ==========================================================================
+   7. Schedule Grid (.schedule-grid)
+   ========================================================================== */
+html.forlabs-dark-theme .schedule-grid {
+  border-color: var(--fl-border-grid) !important;
+}
+
+html.forlabs-dark-theme .fl-week-col,
+html.forlabs-dark-theme .fl-time-col {
+  background-color: var(--fl-bg-card) !important;
+  border-color: var(--fl-border-grid) !important;
+}
+
+html.forlabs-dark-theme .fl-week-header,
+html.forlabs-dark-theme .fl-time-header {
+  background-color: var(--fl-bg-hover) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .fl-week-name {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .fl-week-day-date {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Active day and time slot */
+html.forlabs-dark-theme .fl-week-col.fl-week-active {
+  background-color: var(--fl-bg-active) !important;
+}
+
+html.forlabs-dark-theme .fl-week-col.fl-position-active {
+  background-color: #1e2834 !important;
+}
+
+/* Schedule Entry */
+html.forlabs-dark-theme .schedule-entry {
+  border-bottom-color: var(--fl-border-grid) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .schedule-entry__hour {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .schedule-entry__study-name,
+html.forlabs-dark-theme .schedule-entry__study-name a {
+  color: var(--fl-link) !important;
+}
+
+html.forlabs-dark-theme .schedule-entry__type {
+  color: #38bdf8 !important;
+}
+
+html.forlabs-dark-theme .schedule-entry__lecturer-name {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .schedule-entry__room-name {
+  color: var(--fl-text-main) !important;
+}
+
+/* ==========================================================================
+   8. Details View, Rich Text & Learning Content (.lm-details, .lm-details-value, [ng-bind-html])
+   ========================================================================== */
+html.forlabs-dark-theme .lm-details-field {
+  border-bottom-color: var(--fl-border-table) !important;
+}
+
+html.forlabs-dark-theme .lm-details-label {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Headings in content */
+html.forlabs-dark-theme h1,
+html.forlabs-dark-theme h2,
+html.forlabs-dark-theme h3,
+html.forlabs-dark-theme h4,
+html.forlabs-dark-theme h5,
+html.forlabs-dark-theme h6,
+html.forlabs-dark-theme .lm-details-value h1,
+html.forlabs-dark-theme .lm-details-value h2,
+html.forlabs-dark-theme .lm-details-value h3,
+html.forlabs-dark-theme .lm-details-value h4,
+html.forlabs-dark-theme .lm-details-value h5,
+html.forlabs-dark-theme .lm-details-value h6,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value h1,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value h2,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value h3,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value h4,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value h5,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value h6,
+html.forlabs-dark-theme [ng-bind-html] h1,
+html.forlabs-dark-theme [ng-bind-html] h2,
+html.forlabs-dark-theme [ng-bind-html] h3,
+html.forlabs-dark-theme [ng-bind-html] h4,
+html.forlabs-dark-theme [ng-bind-html] h5,
+html.forlabs-dark-theme [ng-bind-html] h6,
+html.forlabs-dark-theme section h1,
+html.forlabs-dark-theme section h2,
+html.forlabs-dark-theme section h3,
+html.forlabs-dark-theme section h4,
+html.forlabs-dark-theme section h5,
+html.forlabs-dark-theme section h6 {
+  color: var(--fl-text-bright) !important;
+}
+
+/* Bold text */
+html.forlabs-dark-theme b,
+html.forlabs-dark-theme strong,
+html.forlabs-dark-theme .lm-details-value b,
+html.forlabs-dark-theme .lm-details-value strong,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value b,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value strong,
+html.forlabs-dark-theme [ng-bind-html] b,
+html.forlabs-dark-theme [ng-bind-html] strong {
+  color: var(--fl-text-bright) !important;
+}
+
+/* Rich-text content & task description */
+html.forlabs-dark-theme .lm-details-value,
+html.forlabs-dark-theme .lm-details-value p,
+html.forlabs-dark-theme .lm-details-value div,
+html.forlabs-dark-theme .lm-details-value span,
+html.forlabs-dark-theme .lm-details-value li,
+html.forlabs-dark-theme .lm-details-value td,
+html.forlabs-dark-theme .lm-details-value th,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value p,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value div,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value span,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value li,
+html.forlabs-dark-theme .lm-index section,
+html.forlabs-dark-theme .lm-index section p,
+html.forlabs-dark-theme .lm-index section div,
+html.forlabs-dark-theme .lm-index section span,
+html.forlabs-dark-theme .lm-index section li,
+html.forlabs-dark-theme [ng-bind-html],
+html.forlabs-dark-theme [ng-bind-html] p,
+html.forlabs-dark-theme [ng-bind-html] div,
+html.forlabs-dark-theme [ng-bind-html] span,
+html.forlabs-dark-theme [ng-bind-html] li {
+  color: var(--fl-text-main) !important;
+}
+
+/* Clean override for any inline styles or hardcoded dark text inside rich text */
+html.forlabs-dark-theme [ng-bind-html] *:not(.text-danger):not(.text-success):not(.text-warning):not(.text-info):not([class*="status"]):not(a):not(b):not(strong):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+html.forlabs-dark-theme .lm-details-value *:not(.text-danger):not(.text-success):not(.text-warning):not(.text-info):not([class*="status"]):not(a):not(b):not(strong):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value *:not(.text-danger):not(.text-success):not(.text-warning):not(.text-info):not([class*="status"]):not(a):not(b):not(strong):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  color: inherit !important;
+}
+
+/* Links inside details & rich text */
+html.forlabs-dark-theme .lm-details-value a,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value a,
+html.forlabs-dark-theme [ng-bind-html] a,
+html.forlabs-dark-theme .lm-index section a {
+  color: #58a6ff !important;
+}
+
+html.forlabs-dark-theme .lm-details-value a:hover,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value a:hover,
+html.forlabs-dark-theme [ng-bind-html] a:hover,
+html.forlabs-dark-theme .lm-index section a:hover {
+  color: #79c0ff !important;
+}
+
+/* Blockquotes in assignments and chapters */
+html.forlabs-dark-theme blockquote,
+html.forlabs-dark-theme .lm-details-value blockquote,
+html.forlabs-dark-theme .lm-details-field-type-text-editor .lm-details-value blockquote,
+html.forlabs-dark-theme [ng-bind-html] blockquote {
+  border-left-color: #3b4555 !important;
+  color: var(--fl-text-main) !important;
+  background: transparent !important;
+}
+
+/* Pale / muted helper text */
+html.forlabs-dark-theme .pale,
+html.forlabs-dark-theme .pale p,
+html.forlabs-dark-theme .pale span {
+  color: var(--fl-text-muted) !important;
+  opacity: 0.8 !important;
+}
+
+/* Block / Exam completion and status icons ("Блок пройден!", etc.) */
+html.forlabs-dark-theme center > svg,
+html.forlabs-dark-theme svg.pale {
+  color: var(--fl-text-main) !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+html.forlabs-dark-theme center > svg path,
+html.forlabs-dark-theme svg.pale path,
+html.forlabs-dark-theme center > svg polygon,
+html.forlabs-dark-theme svg.pale polygon,
+html.forlabs-dark-theme center > svg circle,
+html.forlabs-dark-theme svg.pale circle {
+  fill: currentColor !important;
+}
+
+html.forlabs-dark-theme center > svg rect:not([fill="none"]),
+html.forlabs-dark-theme svg.pale rect:not([fill="none"]) {
+  fill: currentColor !important;
+}
+
+/* Code & Pre inside assignments / course */
+html.forlabs-dark-theme pre,
+html.forlabs-dark-theme code,
+html.forlabs-dark-theme .lm-details-value pre,
+html.forlabs-dark-theme .lm-details-value code,
+html.forlabs-dark-theme [ng-bind-html] pre,
+html.forlabs-dark-theme [ng-bind-html] code {
+  background-color: var(--fl-bg-page) !important;
+  border-color: var(--fl-border-card) !important;
+  color: #e6edf3 !important;
+}
+
+/* Tables inside task details & descriptions */
+html.forlabs-dark-theme .lm-details-value table,
+html.forlabs-dark-theme .lm-details-value table td,
+html.forlabs-dark-theme .lm-details-value table th,
+html.forlabs-dark-theme [ng-bind-html] table,
+html.forlabs-dark-theme [ng-bind-html] table td,
+html.forlabs-dark-theme [ng-bind-html] table th {
+  border-color: var(--fl-border-card) !important;
+  background-color: transparent !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .lm-details-value table th,
+html.forlabs-dark-theme [ng-bind-html] table th {
+  color: var(--fl-text-bright) !important;
+}
+
+/* Horizontal separators */
+html.forlabs-dark-theme hr,
+html.forlabs-dark-theme .lm-index hr,
+html.forlabs-dark-theme section hr {
+  border-top-color: var(--fl-border-table) !important;
+}
+
+/* Chapter block progress indicator */
+html.forlabs-dark-theme .fl-blocks__progress {
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .fl-blocks__progress strong {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .fl-blocks__progress .pale {
+  color: var(--fl-text-muted) !important;
+}
+
+/* ==========================================================================
+   List Groups & Attached Files (.list-group, .list-group-item)
+   Used for: Task Attached Files, Course Syllabus Attached Files, Chapter List on Right
+   ========================================================================== */
+html.forlabs-dark-theme .list-group-item {
+  background-color: var(--fl-bg-card) !important;
+  border-color: var(--fl-border-card) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .list-group-item:hover {
+  background-color: var(--fl-bg-hover) !important;
+}
+
+html.forlabs-dark-theme .list-group-item a {
+  color: #58a6ff !important;
+}
+
+html.forlabs-dark-theme .list-group-item a:hover {
+  color: #79c0ff !important;
+}
+
+html.forlabs-dark-theme .list-group-item b,
+html.forlabs-dark-theme .list-group-item strong {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .list-group-item .filename,
+html.forlabs-dark-theme .list-group-item .filename a {
+  color: #58a6ff !important;
+}
+
+html.forlabs-dark-theme .list-group-item .filesize {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .list-group-item .text-muted {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .list-group-item.active,
+html.forlabs-dark-theme .list-group-item.active:hover,
+html.forlabs-dark-theme .list-group-item.active:focus {
+  background-color: #0f8dad !important;
+  border-color: #0f8dad !important;
+  color: #ffffff !important;
+}
+
+html.forlabs-dark-theme .list-group-item.active a,
+html.forlabs-dark-theme .list-group-item.active b,
+html.forlabs-dark-theme .list-group-item.active strong {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   9. Form Controls & ui-select (Light, legible text)
+   ========================================================================== */
+html.forlabs-dark-theme .form-control,
+html.forlabs-dark-theme input[type="text"],
+html.forlabs-dark-theme input[type="password"],
+html.forlabs-dark-theme select,
+html.forlabs-dark-theme textarea {
+  background-color: var(--fl-bg-page) !important;
+  color: var(--fl-text-main) !important;
+  border-color: var(--fl-border-grid) !important;
+}
+
+html.forlabs-dark-theme .btn-default {
+  background-color: var(--fl-bg-card) !important;
+  background-image: none !important;
+  border-color: var(--fl-border-grid) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .btn-default:hover,
+html.forlabs-dark-theme .btn-default:focus {
+  background-color: var(--fl-bg-hover) !important;
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .btn-default.active,
+html.forlabs-dark-theme .btn-group .btn.active {
+  background-color: #0f8dad !important;
+  border-color: #0f8dad !important;
+  color: #ffffff !important;
+}
+
+/* UI Select Dropdown (Schedule group selector, etc.) */
+html.forlabs-dark-theme .ui-select-bootstrap > .ui-select-match > .btn {
+  background-color: var(--fl-bg-page) !important;
+  border-color: var(--fl-border-grid) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .ui-select-bootstrap .form-control.ui-select-search {
+  background-color: var(--fl-bg-page) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .ui-select-choices,
+html.forlabs-dark-theme .ui-select-bootstrap > .ui-select-choices,
+html.forlabs-dark-theme .dropdown-menu {
+  background-color: var(--fl-bg-card) !important;
+  border-color: var(--fl-border-grid) !important;
+}
+
+/* Bright, legible text for dropdown items */
+html.forlabs-dark-theme .ui-select-bootstrap .ui-select-choices-row > span,
+html.forlabs-dark-theme .ui-select-choices-row > span,
+html.forlabs-dark-theme .ui-select-choices-row > a,
+html.forlabs-dark-theme .dropdown-menu > li > a {
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .ui-select-bootstrap .ui-select-choices-row > span:hover,
+html.forlabs-dark-theme .ui-select-bootstrap .ui-select-choices-row > span:focus,
+html.forlabs-dark-theme .ui-select-choices-row.active > a,
+html.forlabs-dark-theme .dropdown-menu > li > a:hover {
+  background-color: var(--fl-bg-hover) !important;
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .ui-select-bootstrap .ui-select-choices-row.active > span {
+  background-color: #0f8dad !important;
+  color: #ffffff !important;
+}
+
+html.forlabs-dark-theme .ui-select-highlight {
+  color: #38bdf8 !important;
+}
+
+/* ==========================================================================
+   10. Dialogs & Modals (General & Assignment / Chat Dialog)
+   ========================================================================== */
+/* Translucent backdrop overlay (just like original light theme, slight darkening) */
+html.forlabs-dark-theme .ngdialog.ngdialog-theme-default .ngdialog-content,
+html.forlabs-dark-theme .ngdialog-content {
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+
+html.forlabs-dark-theme .ngdialog-overlay {
+  background: transparent !important;
+}
+
+/* Modal window container */
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content,
+html.forlabs-dark-theme .lm-dialog-content {
+  background-color: var(--fl-bg-card) !important;
+  border: 1px solid var(--fl-border-card) !important;
+  color: var(--fl-text-main) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Dialog Header */
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content .lm-dialog-header,
+html.forlabs-dark-theme .lm-dialog .lm-dialog-header,
+html.forlabs-dark-theme .lm-dialog-header {
+  background-color: var(--fl-bg-card) !important;
+  border-bottom: 1px solid var(--fl-border-card) !important;
+  color: var(--fl-text-bright) !important;
+}
+
+/* Chat dialog header info & close icon */
+html.forlabs-dark-theme .lm-dialog .chat-dialog-info,
+html.forlabs-dark-theme .lm-dialog .chat-dialog-info b {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .chat-dialog-credits,
+html.forlabs-dark-theme .lm-dialog .chat-dialog-credits b {
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .chat-dialog-credits .credit-last-date,
+html.forlabs-dark-theme .lm-dialog .chat-dialog-credits .text-muted {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .chat-dialog-close > span,
+html.forlabs-dark-theme .lm-dialog .close-dialog > span,
+html.forlabs-dark-theme .ngdialog-close:before {
+  color: var(--fl-text-muted) !important;
+  opacity: 0.7 !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .chat-dialog-close > span:hover,
+html.forlabs-dark-theme .lm-dialog .close-dialog > span:hover,
+html.forlabs-dark-theme .ngdialog-close:hover:before {
+  color: var(--fl-text-bright) !important;
+  opacity: 1 !important;
+}
+
+/* Dialog Body */
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content .lm-dialog-body,
+html.forlabs-dark-theme .lm-dialog .lm-dialog-body {
+  background-color: var(--fl-bg-card) !important;
+  color: var(--fl-text-main) !important;
+}
+
+/* Chat scrollbar */
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content.lm-dialog-chat .lm-dialog-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content.lm-dialog-chat .lm-dialog-body::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Empty state in chat */
+html.forlabs-dark-theme .no-messages-found {
+  color: var(--fl-text-muted) !important;
+  filter: invert(0.8);
+}
+
+/* Chat Date Badge */
+html.forlabs-dark-theme .task-responses .task-response__date {
+  background-color: #2b313a !important;
+  color: var(--fl-text-muted) !important;
+}
+
+/* Chat Avatar */
+html.forlabs-dark-theme .task-responses .task-response__avatar {
+  background-color: #2b313a !important;
+  color: var(--fl-text-muted) !important;
+}
+
+/* Message Bubbles: Other users (Teachers / Students) */
+html.forlabs-dark-theme .task-responses .task-response {
+  background-color: #232b35 !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response .task-response__author {
+  color: #58a6ff !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response .task-response__message {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response .task-response__time {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Message Bubbles: Student's Own messages */
+html.forlabs-dark-theme .task-responses .task-response__user_own .task-response {
+  background-color: #322528 !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__user_own .task-response .task-response__author {
+  color: #e5989b !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__user_own .task-response .task-response__message {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__user_own .task-response .task-response__time {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Attached Files inside Message Bubble */
+html.forlabs-dark-theme .task-responses .task-response__files .list-group-item {
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__files .list-group-item .filename a,
+html.forlabs-dark-theme .task-responses .task-response__files .list-group-item .filename {
+  color: #58a6ff !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__files .list-group-item .filesize {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__files .list-group-item .fa-eye {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .task-responses .task-response__files .list-group-item .fa-eye:hover {
+  color: var(--fl-text-bright) !important;
+}
+
+/* Dialog Footer & Chat Input Bar */
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content .lm-dialog-footer,
+html.forlabs-dark-theme .lm-dialog .lm-dialog-footer,
+html.forlabs-dark-theme .lm-dialog-footer {
+  border-top: 1px solid var(--fl-border-card) !important;
+  background-color: var(--fl-bg-card) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .lm-dialog-content.lm-dialog-chat .lm-dialog-footer {
+  background-color: var(--fl-bg-card) !important;
+  border-top: 1px solid var(--fl-border-card) !important;
+}
+
+/* Chat Input: Paperclip, Send icons */
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .input-group-addon,
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .input-group-addon .fa {
+  color: var(--fl-text-muted) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .input-group-addon .fa:hover {
+  color: var(--fl-text-bright) !important;
+}
+
+/* Chat Textarea */
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer .form-control,
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer textarea {
+  background-color: var(--fl-bg-page) !important;
+  color: var(--fl-text-bright) !important;
+  border: 1px solid var(--fl-border-card) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer textarea:focus {
+  background-color: var(--fl-bg-page) !important;
+  border-color: var(--fl-border-focus) !important;
+  color: var(--fl-text-bright) !important;
+  outline: none !important;
+}
+
+html.forlabs-dark-theme .lm-dialog-content.lm-dialog-chat .lm-dialog-footer textarea::placeholder {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Child Dialogs (File upload dialog, file list) */
+html.forlabs-dark-theme .lm-dialog .list-group-item {
+  background-color: var(--fl-bg-page) !important;
+  border-color: var(--fl-border-card) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .list-group-item .filename {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-dialog .list-group-item .filesize {
+  color: var(--fl-text-muted) !important;
+}
+
+/* Rating / Assessment dialog stars */
+html.forlabs-dark-theme .assessment-choicer .star-rating .fa-star._valuable {
+  color: #f6c845 !important;
+}
+
+html.forlabs-dark-theme .assessment-choicer .star-rating .fa-star-o {
+  color: var(--fl-text-muted) !important;
+}
+
+/* ==========================================================================
+   11. Login Page
+   ========================================================================== */
+html.forlabs-dark-theme .lm-login .lm-login-container .lm-login-modal .lm-login-modal-content {
+  background: var(--fl-bg-card) !important;
+  color: var(--fl-text-main) !important;
+}
+
+html.forlabs-dark-theme .lm-login .lm-login-container .lm-login-modal .lm-login-modal-content .lm-login-modal-header {
+  border-bottom-color: var(--fl-border-card) !important;
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-login .lm-login-container .lm-login-modal .lm-login-modal-content .lm-login-modal-footer {
+  border-top-color: var(--fl-border-card) !important;
+}
+
+/* Remove dirty gray rectangle at the bottom of the login modal */
+html.forlabs-dark-theme .fl-login-actions {
+  background: transparent !important;
+  border-top: 1px solid var(--fl-border-card) !important;
+}
+
+html.forlabs-dark-theme .fl-login-actions .btn.btn-link {
+  color: var(--fl-text-muted) !important;
+  text-decoration: underline !important;
+}
+
+html.forlabs-dark-theme .fl-login-actions .btn.btn-link:hover {
+  color: var(--fl-text-bright) !important;
+}
+
+html.forlabs-dark-theme .lm-login-modal-alert {
+  background-color: rgba(239, 83, 80, 0.15) !important;
+  color: #ff8080 !important;
+  border-bottom: 1px solid rgba(239, 83, 80, 0.3) !important;
+}
+
+/* ==========================================================================
+   12. Scrollbars
+   ========================================================================== */
+html.forlabs-dark-theme ::-webkit-scrollbar-track {
+  background: var(--fl-bg-page);
+}
+
+html.forlabs-dark-theme ::-webkit-scrollbar-thumb {
+  background-color: var(--fl-border-grid);
+}
