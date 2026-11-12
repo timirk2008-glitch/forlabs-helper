@@ -1,0 +1,1115 @@
+/**
+ * Forlabs Helper — Color Themes Engine
+ * Provides independent color palette switching across the entire portal.
+ * Seamlessly cooperates with Dark/Light themes, UI Fixes, Menu Styles, Rounded Interface, and Glassmorphism.
+ */
+
+/* ==========================================================================
+   1. Theme Variables Definitions
+   ========================================================================== */
+
+/* 1.1 Default Brand Theme (Authentic Turquoise / Teal) */
+:root,
+html.forlabs-theme-default {
+  --fl-theme-name: "default";
+  --fl-theme-primary: #0c7087;
+  --fl-theme-primary-hover: #0e839e;
+  --fl-theme-primary-active: #09596c;
+  --fl-theme-primary-gradient: linear-gradient(180deg, #0d7c95, #0c7087 6%, #0b6479);
+  --fl-theme-accent: #0f8dad;
+  --fl-theme-accent-hover: #13a3c7;
+  --fl-theme-accent-light: rgba(15, 141, 173, 0.15);
+  --fl-theme-accent-glow: rgba(15, 141, 173, 0.35);
+  --fl-theme-sidebar-bg: #035063;
+  --fl-theme-sidebar-header: #002832;
+  --fl-theme-sidebar-sub: #023643;
+  --fl-theme-sidebar-footer: #035063;
+  --fl-theme-glass-sidebar: rgba(3, 80, 99, 0.6);
+  --fl-theme-glass-sidebar-dark: rgba(2, 65, 80, 0.58);
+  --fl-theme-glass-header: rgba(0, 40, 50, 0.6);
+  --fl-theme-glass-sub: rgba(0, 30, 40, 0.45);
+  --fl-theme-link-dark: #38bdf8;
+  --fl-theme-link-light: #0c7087;
+}
+
+/* 1.2 Amethyst / Purple Theme (Королевский аметист / Фиолетовая) */
+html.forlabs-theme-purple {
+  --fl-theme-name: "purple";
+  --fl-theme-primary: #7c3aed;
+  --fl-theme-primary-hover: #8b5cf6;
+  --fl-theme-primary-active: #6d28d9;
+  --fl-theme-primary-gradient: linear-gradient(180deg, #8b5cf6, #7c3aed 6%, #6d28d9);
+  --fl-theme-accent: #8b5cf6;
+  --fl-theme-accent-hover: #a78bfa;
+  --fl-theme-accent-light: rgba(139, 92, 246, 0.15);
+  --fl-theme-accent-glow: rgba(139, 92, 246, 0.35);
+  --fl-theme-sidebar-bg: #2e1065;
+  --fl-theme-sidebar-header: #1e0a3c;
+  --fl-theme-sidebar-sub: #240b52;
+  --fl-theme-sidebar-footer: #2e1065;
+  --fl-theme-glass-sidebar: rgba(67, 24, 150, 0.62);
+  --fl-theme-glass-sidebar-dark: rgba(46, 16, 101, 0.58);
+  --fl-theme-glass-header: rgba(30, 10, 60, 0.65);
+  --fl-theme-glass-sub: rgba(24, 8, 50, 0.5);
+  --fl-theme-link-dark: #a78bfa;
+  --fl-theme-link-light: #7c3aed;
+  --fl-theme-scrollbar-thumb: #8b5cf6;
+  --fl-theme-scrollbar-thumb-hover: #a78bfa;
+}
+
+/* 1.3 "Я хочу Вкусно и точка" Theme (vkusno) */
+html.forlabs-theme-vkusno {
+  --fl-theme-name: "vkusno";
+  --fl-theme-primary: #ee7203;
+  --fl-theme-primary-hover: #ff8315;
+  --fl-theme-primary-active: #c95705;
+  --fl-theme-primary-gradient: linear-gradient(180deg, #ff8315, #ee7203 6%, #c95705);
+  --fl-theme-accent: #ee7203;
+  --fl-theme-accent-hover: #ff8315;
+  --fl-theme-accent-light: rgba(238, 114, 3, 0.16);
+  --fl-theme-accent-glow: rgba(238, 114, 3, 0.35);
+  --fl-theme-sidebar-bg: #193f2d;
+  --fl-theme-sidebar-header: #102b1e;
+  --fl-theme-sidebar-sub: #143526;
+  --fl-theme-sidebar-footer: #193f2d;
+  --fl-theme-glass-sidebar: rgba(25, 63, 45, 0.72);
+  --fl-theme-glass-sidebar-dark: rgba(18, 46, 33, 0.75);
+  --fl-theme-glass-header: rgba(16, 38, 27, 0.80);
+  --fl-theme-glass-sub: rgba(14, 34, 24, 0.60);
+  --fl-theme-link-dark: #ffffff;
+  --fl-theme-link-light: #111827;
+  --fl-theme-burger-red: #e8410f;
+  --fl-theme-scrollbar-thumb: #e8410f;
+  --fl-theme-scrollbar-thumb-hover: #ff541e;
+}
+
+/* Tailored Dark Theme Backgrounds for Vkusno i tochka */
+html.forlabs-theme-vkusno.forlabs-dark-theme {
+  --fl-bg-page: #131714 !important;
+  --fl-bg-card: #1a201c !important;
+  --fl-bg-card-alt: #202722 !important;
+  --fl-bg-header: #171d19 !important;
+  --fl-bg-hover: #222a24 !important;
+  --fl-bg-active: #28332c !important;
+  --fl-border-card: #28332c !important;
+  --fl-border-table: #232b26 !important;
+  --fl-border-grid: #2f3c34 !important;
+  --fl-text-main: #d2dcd6 !important;
+  --fl-text-bright: #ffffff !important;
+  --fl-text-muted: #81958b !important;
+  --fl-link: #ffffff !important;
+}
+
+/* Tailored Light Theme Backgrounds for Vkusno i tochka (Internal App Pages Only) */
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-container,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-container-body,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-content {
+  background-color: #fbf9f5 !important;
+  --fl-link: #111827 !important;
+}
+
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page):not(:has(.bg-pale)):not(:has(.big-logo)) body:not(.forlabs-landing-body):not(:has(.bg-pale)):not(:has(.big-logo)) {
+  background-color: #fbf9f5 !important;
+}
+
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-container-header,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-card,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .card,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .panel,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) .table {
+  background-color: #ffffff;
+}
+
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) th,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme):not(.forlabs-landing-page) thead td {
+  color: #111827 !important;
+}
+
+/* Landing Page & Logo Protection: Strictly transparent backing (no white box) */
+.bg-pale,
+.bg-pale .content,
+.bg-pale .content > a,
+.bg-pale .big-logo,
+.forlabs-landing-page .content,
+.forlabs-landing-page .content > a,
+.forlabs-landing-page .big-logo,
+html.forlabs-theme-vkusno .content,
+html.forlabs-theme-vkusno .content > a,
+html.forlabs-theme-vkusno .big-logo,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .content,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .content > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .big-logo,
+html.forlabs-theme-vkusno.forlabs-dark-theme .content,
+html.forlabs-theme-vkusno.forlabs-dark-theme .content > a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .big-logo {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* ==========================================================================
+   1.3.5 Strict Text Recoloring for "Я хочу Вкусно и точка"
+   All text & links: Pure White in Dark Theme, Pure Black in Light Theme
+   ========================================================================== */
+
+/* --- DARK THEME: Pure White Text (#ffffff) --- */
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-container a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-container a:visited,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-content a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-content a:visited,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-dialog a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-dialog a:visited,
+html.forlabs-theme-vkusno.forlabs-dark-theme .table a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .table a:visited,
+html.forlabs-theme-vkusno.forlabs-dark-theme .card a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .card a:visited,
+html.forlabs-theme-vkusno.forlabs-dark-theme .fl-schedule a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .fl-schedule a:visited,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tabs .lm-tab-container .lm-tab-item,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tabs .lm-tab-container .lm-tab-item.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tab-item,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tab-item.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-breadcrumb-item,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-breadcrumb-item a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__type,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__study-name,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__subject-name,
+html.forlabs-theme-vkusno.forlabs-dark-theme .task-responses .task-response .task-response__user-name,
+html.forlabs-theme-vkusno.forlabs-dark-theme .task-responses .task-response__filename,
+html.forlabs-theme-vkusno.forlabs-dark-theme th,
+html.forlabs-theme-vkusno.forlabs-dark-theme thead th,
+html.forlabs-theme-vkusno.forlabs-dark-theme thead td,
+html.forlabs-theme-vkusno.forlabs-dark-theme legend,
+html.forlabs-theme-vkusno.forlabs-dark-theme .btn.btn-link,
+html.forlabs-theme-vkusno.forlabs-dark-theme .btn.btn-link:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme .passing-item__answer label.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .ui-select-highlight,
+html.forlabs-theme-vkusno.forlabs-dark-theme .ui-select-no-choice.dropdown-menu > li > span.ui-select-action,
+html.forlabs-theme-vkusno.forlabs-dark-theme .forlabs-header-section-btn.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .forlabs-header-dropdown-item:hover {
+  color: #ffffff !important;
+}
+
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-container a:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-content a:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme .table a:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme .card a:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__study-name:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__subject-name:hover {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+}
+
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__teacher-name,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__auditorium-name {
+  color: #9daea4 !important;
+}
+
+/* --- LIGHT THEME: Pure Black Text (#111827) --- */
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-container a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-container a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-content a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-content a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-dialog a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-dialog a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .table a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .table a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .card a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .card a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .fl-schedule a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .fl-schedule a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tabs .lm-tab-container .lm-tab-item,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tabs .lm-tab-container .lm-tab-item.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tab-item,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tab-item.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-breadcrumb-item,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-breadcrumb-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__type,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__study-name,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__subject-name,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .task-responses .task-response .task-response__user-name,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .task-responses .task-response__filename,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) th,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) thead th,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) thead td,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) legend,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .btn.btn-link,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .btn.btn-link:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .passing-item__answer label.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .ui-select-highlight,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .ui-select-no-choice.dropdown-menu > li > span.ui-select-action,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .forlabs-header-section-btn.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .forlabs-header-dropdown-item:hover {
+  color: #111827 !important;
+}
+
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-container a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-content a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .table a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .card a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__study-name:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__subject-name:hover {
+  color: #111827 !important;
+  text-decoration: underline !important;
+}
+
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__teacher-name,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__auditorium-name {
+  color: #475569 !important;
+}
+
+/* Landing Page Links: Always Pure White Over Meme Background */
+.bg-pale a,
+.bg-pale a:visited,
+.bg-pale a:hover,
+.bg-pale a:active,
+.bg-pale .nav .links > a,
+.bg-pale .nav .links > a:visited,
+.bg-pale .nav .links > a:hover,
+.bg-pale .nav .links > a:active,
+.forlabs-landing-page a,
+.forlabs-landing-page a:visited,
+.forlabs-landing-page a:hover,
+.forlabs-landing-page a:active,
+html.forlabs-theme-vkusno .bg-pale a,
+html.forlabs-theme-vkusno .bg-pale a:visited,
+html.forlabs-theme-vkusno .bg-pale a:hover,
+html.forlabs-theme-vkusno .bg-pale .nav .links > a,
+html.forlabs-theme-vkusno .bg-pale .nav .links > a:visited,
+html.forlabs-theme-vkusno .bg-pale .nav .links > a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a:hover,
+html.forlabs-theme-vkusno.forlabs-landing-page a,
+html.forlabs-theme-vkusno.forlabs-landing-page a:visited,
+html.forlabs-theme-vkusno.forlabs-landing-page a:hover,
+html.forlabs-theme-vkusno body.forlabs-landing-body a,
+html.forlabs-theme-vkusno body.forlabs-landing-body a:visited,
+html.forlabs-theme-vkusno body.forlabs-landing-body a:hover {
+  color: #ffffff !important;
+}
+
+/* Typography replacement from Vkusno i tochka */
+html.forlabs-theme-vkusno,
+html.forlabs-theme-vkusno body,
+html.forlabs-theme-vkusno button,
+html.forlabs-theme-vkusno input,
+html.forlabs-theme-vkusno select,
+html.forlabs-theme-vkusno textarea,
+html.forlabs-theme-vkusno .lm-container,
+html.forlabs-theme-vkusno .lm-menu,
+html.forlabs-theme-vkusno .fl-schedule,
+html.forlabs-theme-vkusno table {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+
+html.forlabs-theme-vkusno h1,
+html.forlabs-theme-vkusno h2,
+html.forlabs-theme-vkusno h3,
+html.forlabs-theme-vkusno h4,
+html.forlabs-theme-vkusno h5,
+html.forlabs-theme-vkusno h6,
+html.forlabs-theme-vkusno .lm-page-title,
+html.forlabs-theme-vkusno .section-title,
+html.forlabs-theme-vkusno legend {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* Also dynamically bind --fl-link in dark theme */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-dark-theme {
+  --fl-link: var(--fl-theme-link-dark);
+}
+
+/* ==========================================================================
+   2. Global Sidebar Hamburger Menu Theming
+   Applies to all menu styles (Original, Compact, Mobile) when a custom theme is active
+   ========================================================================== */
+
+/* Main sidebar container */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel .lm-menu,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel.lm-menu-desktop-visible .lm-menu,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel.lm-menu-desktop-collapsed .lm-menu,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-menu {
+  background: var(--fl-theme-sidebar-bg) !important;
+  background-color: var(--fl-theme-sidebar-bg) !important;
+}
+
+/* Sidebar Header */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel .lm-menu .lm-menu-header,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-menu .lm-menu-header {
+  background: var(--fl-theme-sidebar-header) !important;
+  background-color: var(--fl-theme-sidebar-header) !important;
+}
+
+/* Sidebar Footer */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel .lm-menu .lm-menu-footer,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-menu .lm-menu-footer {
+  background: var(--fl-theme-sidebar-footer) !important;
+  background-color: var(--fl-theme-sidebar-footer) !important;
+}
+
+/* Sidebar Submenus */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.with-sub-menu .lm-menu-sub-list,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.with-sub-menu .lm-menu-sub-list {
+  background: var(--fl-theme-sidebar-sub) !important;
+  background-color: var(--fl-theme-sidebar-sub) !important;
+}
+
+/* Active Menu Item Indicator */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.active > a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.active > a {
+  box-shadow: inset 3px 0 0 0 var(--fl-theme-accent) !important;
+}
+
+/* Sidebar Items, Links & Icons Typography
+   Guarantees that regardless of Light or Dark mode, the dark sidebar always has crisp light/white text and icons */
+.lm-panel .lm-menu a,
+.lm-panel .lm-menu a:visited,
+.lm-panel .lm-menu .lm-menu-list-item a,
+.lm-panel .lm-menu .lm-menu-list-item a:visited,
+.lm-panel .lm-menu .lm-menu-sub-list-item a,
+.lm-panel .lm-menu .lm-menu-sub-list-item a:visited,
+.lm-menu a,
+.lm-menu a:visited,
+.lm-menu .lm-menu-list-item a,
+.lm-menu .lm-menu-list-item a:visited,
+.lm-menu .lm-menu-sub-list-item a,
+.lm-menu .lm-menu-sub-list-item a:visited,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu a,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu a:visited,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item a,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item a:visited,
+html[class*="forlabs-theme-"] .lm-menu a,
+html[class*="forlabs-theme-"] .lm-menu a:visited,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item a,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item a:visited {
+  color: #cecece !important;
+}
+
+.lm-panel .lm-menu .lm-menu-list-item a:hover,
+.lm-panel .lm-menu .lm-menu-list-item.active > a,
+.lm-panel .lm-menu .lm-menu-sub-list-item a:hover,
+.lm-panel .lm-menu .lm-menu-sub-list-item.active > a,
+.lm-menu .lm-menu-list-item a:hover,
+.lm-menu .lm-menu-list-item.active > a,
+.lm-menu .lm-menu-sub-list-item a:hover,
+.lm-menu .lm-menu-sub-list-item.active > a,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item a:hover,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item.active > a,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item a:hover,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item.active > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item.active > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item.active > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item.active > a {
+  color: #ffffff !important;
+}
+
+/* Sidebar Icons */
+.lm-panel .lm-menu .lm-menu-list-item-icon,
+.lm-panel .lm-menu .lm-menu-list-item-icon .fa,
+.lm-panel .lm-menu .lm-menu-list-item a .lm-menu-list-item-icon,
+.lm-panel .lm-menu .lm-menu-list-item a .lm-menu-list-item-icon .fa,
+.lm-panel .lm-menu .lm-menu-header .lm-menu-toggle,
+.lm-panel .lm-menu .lm-menu-header .lm-menu-toggle .fa,
+.lm-menu .lm-menu-list-item-icon,
+.lm-menu .lm-menu-list-item-icon .fa,
+.lm-menu .lm-menu-list-item a .lm-menu-list-item-icon,
+.lm-menu .lm-menu-list-item a .lm-menu-list-item-icon .fa,
+.lm-menu .lm-menu-header .lm-menu-toggle,
+.lm-menu .lm-menu-header .lm-menu-toggle .fa,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item-icon,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item-icon .fa,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item-icon,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item-icon .fa {
+  color: inherit !important;
+}
+
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item a:hover .lm-menu-list-item-icon,
+html[class*="forlabs-theme-"] .lm-panel .lm-menu .lm-menu-list-item a:hover .lm-menu-list-item-icon .fa,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html[class*="forlabs-theme-"] .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a:hover .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a:hover .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   3. Primary Buttons & Interactive Controls
+   ========================================================================== */
+
+/* Buttons: .btn-primary */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn-primary,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn-primary:focus {
+  background-image: var(--fl-theme-primary-gradient) !important;
+  background-color: var(--fl-theme-primary) !important;
+  border-color: var(--fl-theme-primary-active) !important;
+  color: #ffffff !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn-primary:hover {
+  background-image: none !important;
+  background-color: var(--fl-theme-primary-hover) !important;
+  border-color: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn-primary:active,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn-primary.active {
+  background-image: none !important;
+  background-color: var(--fl-theme-primary-active) !important;
+  border-color: var(--fl-theme-primary-active) !important;
+  color: #ffffff !important;
+}
+
+/* Active toggle buttons */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn-default.active,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn.btn-default.active,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn.active {
+  background-color: var(--fl-theme-accent) !important;
+  border-color: var(--fl-theme-accent) !important;
+  color: #ffffff !important;
+}
+
+/* Link-style button hover */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .fl-login-actions .btn.btn-link:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .btn.btn-link:hover {
+  color: var(--fl-theme-primary) !important;
+}
+
+/* Pagination / Pager active & hover */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .pager a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .pager .active > a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .pagination > .active > a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .pagination > .active > span,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .pagination > .active > a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .pagination > .active > span:hover {
+  background-color: var(--fl-theme-primary) !important;
+  border-color: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Toast Notification (Theme Color) */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .toast:not(.toast-error):not(.toast-warning):not(.toast-info),
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) #toast-container > .toast:not(.toast-error):not(.toast-warning):not(.toast-info) {
+  background-color: var(--fl-theme-primary) !important;
+}
+
+/* ==========================================================================
+   4. Form Controls, Checkboxes & Radio Buttons
+   ========================================================================== */
+
+/* Custom styled checkboxes */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) input[type=checkbox]:checked:after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .checkbox input[type=checkbox]:checked:after {
+  background-color: var(--fl-theme-primary) !important;
+  border-color: var(--fl-theme-primary) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) input[type=checkbox]:focus:after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .checkbox input[type=checkbox]:focus:after {
+  border-color: var(--fl-theme-primary) !important;
+}
+
+/* Custom styled radio buttons */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) input[type=radio]:before,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .radio input[type=radio]:before {
+  background-color: var(--fl-theme-primary) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) input[type=radio]:checked:after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .radio input[type=radio]:checked:after {
+  border-color: var(--fl-theme-primary) !important;
+}
+
+/* Form controls on focus */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .form-control:focus,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) input:focus:not([type="checkbox"]):not([type="radio"]),
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) select:focus,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) textarea:focus {
+  border-color: var(--fl-theme-accent) !important;
+  box-shadow: 0 0 0 2px var(--fl-theme-accent-glow) !important;
+}
+
+/* ==========================================================================
+   5. Tabs, Subtabs & Filter Bars
+   ========================================================================== */
+
+/* LMS Tabs (.lm-tabs active border indicator) */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-tabs .lm-tab-container .lm-tab-item.active {
+  border-bottom-color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme) .lm-tabs .lm-tab-container .lm-tab-item.active {
+  color: var(--fl-theme-primary) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme .lm-tabs .lm-tab-container .lm-tab-item.active,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme .lm-tab-item.active {
+  color: var(--fl-theme-accent) !important;
+}
+
+/* Subtab line indicator (e.g. in Webinar, Course tabs, or Rounded interface) */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-tab-item.active:after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .forlabs-subtab-active-indicator,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-dark-theme.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-dark-theme.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after {
+  background-color: var(--fl-theme-accent) !important;
+}
+
+/* Filter selector items (.lm-filters active chip) */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-filters .lm-filter .lm-filter-select-item.active {
+  background: var(--fl-theme-primary) !important;
+  background-color: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Card selector items */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-cards .lm-card .lm-card-header .lm-card-selector .lm-card-selector-item.active {
+  background: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Active list-group-item */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .list-group-item.active,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .list-group-item.active:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .list-group-item.active:focus {
+  background-color: var(--fl-theme-accent) !important;
+  border-color: var(--fl-theme-accent) !important;
+  color: #ffffff !important;
+}
+
+/* Active nav pills */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .nav-pills > li.active > a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .nav-pills > li.active > a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .nav-pills > li.active > a:focus {
+  background-color: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Date range picker active date */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .daterangepicker td.active,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .daterangepicker td.active:hover {
+  background-color: var(--fl-theme-primary) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+}
+
+/* Dropdown menu hover in exports/actions */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-exports .dropdown-menu > li > div:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-exports .dropdown-menu > li > a:hover {
+  background-color: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .ui-select-no-choice.dropdown-menu > li > span.ui-select-action {
+  color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .ui-select-bootstrap .ui-select-choices-row.active > a {
+  background-color: var(--fl-theme-accent) !important;
+  color: #ffffff !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .ui-select-highlight {
+  color: var(--fl-theme-accent) !important;
+}
+
+/* ==========================================================================
+   6. Testing, Course Program & Task Responses
+   ========================================================================== */
+
+/* Selected answer option in tests */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .passing-item__answer .answer-items .answer-item.selected {
+  border-color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .passing-item__answer label.active {
+  color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .passing-item__answer input.form-control:focus {
+  border-color: var(--fl-theme-accent) !important;
+}
+
+/* Test progress boxes: current question indicator */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .passing-boxes .passing-box.current {
+  border-color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .passing-boxes .passing-box.current:before {
+  background: var(--fl-theme-accent) !important;
+}
+
+/* Task response answer toolbar menu */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .lm-ta-tool-menu__item.active {
+  background: var(--fl-theme-primary) !important;
+  color: #ffffff !important;
+}
+
+/* User names and filenames in task response chat */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-dark-theme .task-responses .task-response .task-response__user-name,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-dark-theme .task-responses .task-response__filename {
+  color: var(--fl-theme-link-dark) !important;
+}
+
+/* ==========================================================================
+   7. Schedule Grid (Календарь и расписание)
+   ========================================================================== */
+
+/* Current active pair/lesson block */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .fl-schedule .schedule-grid .fl-position-active:after {
+  background: var(--fl-theme-primary) !important;
+}
+
+/* Schedule entry subject & type in dark theme */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme .schedule-entry__type {
+  color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme .schedule-entry__study-name,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme .schedule-entry__subject-name {
+  color: var(--fl-theme-link-dark) !important;
+}
+
+/* ==========================================================================
+   8. Loading Bar & Spinners
+   ========================================================================== */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) #loading-bar .bar {
+  background: var(--fl-theme-primary) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) #loading-bar .peg {
+  box-shadow: var(--fl-theme-primary) 1px 0 6px 1px !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) #loading-bar-spinner .spinner-icon {
+  border-top-color: var(--fl-theme-primary) !important;
+  border-left-color: var(--fl-theme-primary) !important;
+}
+
+/* ==========================================================================
+   9. Links & Typography (Light & Dark Themes)
+   ========================================================================== */
+
+/* Light theme table headers and legend */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme) th,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme) legend {
+  color: var(--fl-theme-primary) !important;
+}
+
+/* Light theme links */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-container a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-content a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme):not(.forlabs-landing-page) .table a {
+  color: var(--fl-theme-link-light);
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-container a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme):not(.forlabs-landing-page) .lm-content a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno):not(.forlabs-dark-theme):not(.forlabs-landing-page) .table a:hover {
+  color: var(--fl-theme-primary-hover);
+}
+
+/* Dark theme links */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme:not(.forlabs-landing-page) .lm-container a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme:not(.forlabs-landing-page) .lm-content a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme:not(.forlabs-landing-page) .table a {
+  color: var(--fl-theme-link-dark) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme:not(.forlabs-landing-page) .lm-container a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme:not(.forlabs-landing-page) .lm-content a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-dark-theme:not(.forlabs-landing-page) .table a:hover {
+  color: var(--fl-theme-accent-hover) !important;
+}
+
+/* Badges */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) .badge:not(.badge-danger):not(.badge-warning):not(.badge-success) {
+  background-color: var(--fl-theme-accent) !important;
+}
+
+/* ==========================================================================
+   10. Compatibility with Extension Modules
+   ========================================================================== */
+
+/* 10.1 Navigation Style 3 (Header Bar Navigation) */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-menu-header .forlabs-header-section-btn.active {
+  box-shadow: inset 0 -3px 0 0 var(--fl-theme-accent) !important;
+  color: var(--fl-theme-accent) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-theme-vkusno).forlabs-menu-header .forlabs-header-dropdown-item:hover {
+  background: var(--fl-theme-accent-light) !important;
+  color: var(--fl-theme-accent) !important;
+}
+
+/* 10.2 Glassmorphism Module */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-panel .lm-menu,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-menu {
+  background: var(--fl-theme-glass-sidebar) !important;
+  background-color: var(--fl-theme-glass-sidebar) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism.forlabs-dark-theme .lm-panel .lm-menu,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism.forlabs-dark-theme .lm-menu {
+  background: var(--fl-theme-glass-sidebar-dark) !important;
+  background-color: var(--fl-theme-glass-sidebar-dark) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-panel .lm-menu .lm-menu-header,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-menu .lm-menu-header {
+  background: var(--fl-theme-glass-header) !important;
+  background-color: var(--fl-theme-glass-header) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-panel .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.with-sub-menu .lm-menu-sub-list,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-menu .lm-menu-inner .lm-menu-list .lm-menu-list-item.with-sub-menu .lm-menu-sub-list {
+  background: var(--fl-theme-glass-sub) !important;
+  background-color: var(--fl-theme-glass-sub) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism #global-search-input-control:focus,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-glassmorphism .lm-container .lm-container-header .lm-global-search .lm-search-control .form-control:focus {
+  border-color: var(--fl-theme-accent) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 0 12px var(--fl-theme-accent-glow) !important;
+}
+
+/* 10.3 Theme Toggle Button in Header */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default) #forlabs-theme-toggle-btn:hover {
+  color: var(--fl-theme-accent) !important;
+}
+
+/* 10.4 Custom Scrollbar Module Compatibility */
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-custom-scrollbar::-webkit-scrollbar-thumb,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-custom-scrollbar *::-webkit-scrollbar-thumb {
+  background-color: var(--fl-theme-scrollbar-thumb, var(--fl-theme-accent)) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-custom-scrollbar *::-webkit-scrollbar-thumb:hover {
+  background-color: var(--fl-theme-scrollbar-thumb-hover, var(--fl-theme-accent-hover)) !important;
+}
+
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-custom-scrollbar,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default).forlabs-custom-scrollbar * {
+  scrollbar-color: var(--fl-theme-scrollbar-thumb, var(--fl-theme-accent)) transparent !important;
+}
+
+/* Explicit high-specificity rule for "Я хочу Вкусно и точка" (Logo Circle Color #e8410f) */
+html.forlabs-theme-vkusno.forlabs-custom-scrollbar::-webkit-scrollbar-thumb,
+html.forlabs-theme-vkusno.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb,
+html.forlabs-theme-vkusno.forlabs-dark-theme.forlabs-custom-scrollbar::-webkit-scrollbar-thumb,
+html.forlabs-theme-vkusno.forlabs-dark-theme.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb {
+  background-color: #e8410f !important;
+}
+
+html.forlabs-theme-vkusno.forlabs-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+html.forlabs-theme-vkusno.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme.forlabs-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+html.forlabs-theme-vkusno.forlabs-dark-theme.forlabs-custom-scrollbar *::-webkit-scrollbar-thumb:hover {
+  background-color: #ff541e !important;
+}
+
+html.forlabs-theme-vkusno.forlabs-custom-scrollbar,
+html.forlabs-theme-vkusno.forlabs-custom-scrollbar *,
+html.forlabs-theme-vkusno.forlabs-dark-theme.forlabs-custom-scrollbar,
+html.forlabs-theme-vkusno.forlabs-dark-theme.forlabs-custom-scrollbar * {
+  scrollbar-color: #e8410f transparent !important;
+}
+
+/* ==========================================================================
+   11. Logo Customization for "Я хочу Вкусно и точка"
+   ========================================================================== */
+
+/* Collapsed Header Logo: 28px Emblem */
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed svg,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed svg {
+  display: none !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed::before,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-collapsed::before {
+  content: "" !important;
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  margin: 0 auto !important;
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20400%22%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%22195%22%20fill%3D%22%23193f2d%22/%3E%3Cg%20transform%3D%22translate%2845%2C%2060%29%20scale%280.78%29%22%3E%3Ccircle%20cx%3D%2273.7%22%20cy%3D%22241.2%22%20r%3D%2273.7%22%20fill%3D%22%23e8410f%22/%3E%3Cpath%20fill%3D%22%23ef7403%22%20d%3D%22M%20144.2%2C2.9%20A%205.86%2C5.86%200%200%200%20135.9%2C0.95%20A%2073.1%2C73.1%200%200%200%20107.3%2C36.1%20Q%20106.9%2C37.2%20106.5%2C38.4%20A%2070.3%2C70.3%200%200%200%20112.6%2C96.1%20Q%20174.4%2C203.1%20236.2%2C310.1%20A%205.86%2C5.86%200%200%200%20244.2%2C312.2%20A%2066.5%2C66.5%200%200%200%20266.9%2C290.7%20C%20275.8%2C276.8%20277.7%2C262%20276.9%2C249.5%20A%2084.2%2C84.2%200%200%200%20265.5%2C212.9%20Q%20204.8%2C107.9%20144.2%2C2.9%20Z%22/%3E%3Cpath%20fill%3D%22%23ef7403%22%20d%3D%22m%20267.1%2C2.9%20a%205.86%2C5.86%200%200%200%20-8.27%2C-1.97%20a%2073.1%2C73.1%200%200%200%20-28.58%2C35.17%20q%20-0.42%2C1.1%20-0.8%2C2.2%20a%2070.3%2C70.3%200%200%200%206.1%2C57.75%20q%2061.78%2C107%20123.56%2C214%20a%205.86%2C5.86%200%200%200%208.03%2C2.12%20a%2066.5%2C66.5%200%200%200%2022.72%2C-21.47%20c%208.9%2C-13.88%2010.75%2C-28.7%209.95%2C-41.14%20a%2084.2%2C84.2%200%200%200%20-11.35%2C-36.63%20Q%20327.8%2C107.9%20267.1%2C2.9%20Z%22/%3E%3C/g%3E%3C/svg%3E') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+/* Full / Expanded Header Logo: Emblem + Text "ВКУСНО — И ТОЧКА" */
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible svg,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible svg {
+  display: none !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible {
+  display: flex !important;
+  align-items: center !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible::before,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 28px !important;
+  height: 28px !important;
+  flex-shrink: 0 !important;
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20400%22%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%22195%22%20fill%3D%22%23193f2d%22/%3E%3Cg%20transform%3D%22translate%2845%2C%2060%29%20scale%280.78%29%22%3E%3Ccircle%20cx%3D%2273.7%22%20cy%3D%22241.2%22%20r%3D%2273.7%22%20fill%3D%22%23e8410f%22/%3E%3Cpath%20fill%3D%22%23ef7403%22%20d%3D%22M%20144.2%2C2.9%20A%205.86%2C5.86%200%200%200%20135.9%2C0.95%20A%2073.1%2C73.1%200%200%200%20107.3%2C36.1%20Q%20106.9%2C37.2%20106.5%2C38.4%20A%2070.3%2C70.3%200%200%200%20112.6%2C96.1%20Q%20174.4%2C203.1%20236.2%2C310.1%20A%205.86%2C5.86%200%200%200%20244.2%2C312.2%20A%2066.5%2C66.5%200%200%200%20266.9%2C290.7%20C%20275.8%2C276.8%20277.7%2C262%20276.9%2C249.5%20A%2084.2%2C84.2%200%200%200%20265.5%2C212.9%20Q%20204.8%2C107.9%20144.2%2C2.9%20Z%22/%3E%3Cpath%20fill%3D%22%23ef7403%22%20d%3D%22m%20267.1%2C2.9%20a%205.86%2C5.86%200%200%200%20-8.27%2C-1.97%20a%2073.1%2C73.1%200%200%200%20-28.58%2C35.17%20q%20-0.42%2C1.1%20-0.8%2C2.2%20a%2070.3%2C70.3%200%200%200%206.1%2C57.75%20q%2061.78%2C107%20123.56%2C214%20a%205.86%2C5.86%200%200%200%208.03%2C2.12%20a%2066.5%2C66.5%200%200%200%2022.72%2C-21.47%20c%208.9%2C-13.88%2010.75%2C-28.7%209.95%2C-41.14%20a%2084.2%2C84.2%200%200%200%20-11.35%2C-36.63%20Q%20327.8%2C107.9%20267.1%2C2.9%20Z%22/%3E%3C/g%3E%3C/svg%3E') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible::after,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible::after {
+  content: "ВКУСНО — И ТОЧКА" !important;
+  display: inline-block !important;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  color: #ffffff !important;
+  margin-left: 10px !important;
+  white-space: nowrap !important;
+}
+
+/* Compact Menu crossfade coordinate alignment */
+html.forlabs-theme-vkusno.forlabs-menu-compact .lm-panel .lm-menu .lm-menu-header .lm-menu-header-title.lm-menu-visible {
+  padding-left: 11px !important;
+}
+
+/* Landing / Big Logo */
+html.forlabs-theme-vkusno .content > a .big-logo,
+html.forlabs-theme-vkusno .big-logo {
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20230%2036%22%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2218%22%20r%3D%2217.5%22%20fill%3D%22%23193f2d%22/%3E%3Cg%20transform%3D%22translate%284%2C%205.5%29%20scale%280.07%29%22%3E%3Ccircle%20cx%3D%2273.7%22%20cy%3D%22241.2%22%20r%3D%2273.7%22%20fill%3D%22%23e8410f%22/%3E%3Cpath%20fill%3D%22%23ef7403%22%20d%3D%22M%20144.2%2C2.9%20A%205.86%2C5.86%200%200%200%20135.9%2C0.95%20A%2073.1%2C73.1%200%200%200%20107.3%2C36.1%20Q%20106.9%2C37.2%20106.5%2C38.4%20A%2070.3%2C70.3%200%200%200%20112.6%2C96.1%20Q%20174.4%2C203.1%20236.2%2C310.1%20A%205.86%2C5.86%200%200%200%20244.2%2C312.2%20A%2066.5%2C66.5%200%200%200%20266.9%2C290.7%20C%20275.8%2C276.8%20277.7%2C262%20276.9%2C249.5%20A%2084.2%2C84.2%200%200%200%20265.5%2C212.9%20Q%20204.8%2C107.9%20144.2%2C2.9%20Z%22/%3E%3Cpath%20fill%3D%22%23ef7403%22%20d%3D%22m%20267.1%2C2.9%20a%205.86%2C5.86%200%200%200%20-8.27%2C-1.97%20a%2073.1%2C73.1%200%200%200%20-28.58%2C35.17%20q%20-0.42%2C1.1%20-0.8%2C2.2%20a%2070.3%2C70.3%200%200%200%206.1%2C57.75%20q%2061.78%2C107%20123.56%2C214%20a%205.86%2C5.86%200%200%200%208.03%2C2.12%20a%2066.5%2C66.5%200%200%200%2022.72%2C-21.47%20c%208.9%2C-13.88%2010.75%2C-28.7%209.95%2C-41.14%20a%2084.2%2C84.2%200%200%200%20-11.35%2C-36.63%20Q%20327.8%2C107.9%20267.1%2C2.9%20Z%22/%3E%3C/g%3E%3Ctext%20x%3D%2244%22%20y%3D%2224%22%20fill%3D%22%23ffffff%22%20font-family%3D%22system-ui%2C%20-apple-system%2C%20sans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2214.5%22%20letter-spacing%3D%220.5%22%3E%D0%92%D0%9A%D0%A3%D0%A1%D0%9D%D0%9E%20%E2%80%94%20%D0%98%20%D0%A2%D0%9E%D0%A7%D0%9A%D0%90%3C/text%3E%3C/svg%3E') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+html.forlabs-theme-vkusno .big-logo path,
+html.forlabs-theme-vkusno .big-logo g,
+html.forlabs-theme-vkusno .big-logo polygon {
+  opacity: 0 !important;
+}
+
+/* Landing Page Meme Background for "Я хочу Вкусно и точка" */
+html.forlabs-theme-vkusno body:has(.bg-pale),
+html.forlabs-theme-vkusno body:has(.big-logo),
+html.forlabs-theme-vkusno.forlabs-landing-page body,
+html.forlabs-theme-vkusno body.forlabs-landing-body {
+  background-image: var(--fl-vkusno-landing-bg, url('IWent.png')) !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+html.forlabs-theme-vkusno .bg-pale,
+html.forlabs-theme-vkusno.forlabs-dark-theme .bg-pale {
+  background: rgba(0, 0, 0, 0.32) !important;
+}
+
+/* ==========================================================================
+   12. Master Landing Page & Text Enforcement Block
+   Guarantees that:
+   1. The landing page background, logo, links and texts are NEVER distorted
+      by dark/light switching or any general container rules.
+   2. All text in "Я хочу Вкусно и точка" follows strict accessibility:
+      Pure White in Dark Theme, Pure Black in Light Theme.
+   ========================================================================== */
+
+/* Landing Page: Always transparent background on logo, link, and container */
+.bg-pale,
+.bg-pale .content,
+.bg-pale .content > a,
+.bg-pale .big-logo,
+.forlabs-landing-page .content,
+.forlabs-landing-page .content > a,
+.forlabs-landing-page .big-logo,
+html.forlabs-theme-vkusno .content,
+html.forlabs-theme-vkusno .content > a,
+html.forlabs-theme-vkusno .big-logo,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .content,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .content > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .big-logo,
+html.forlabs-theme-vkusno.forlabs-dark-theme .content,
+html.forlabs-theme-vkusno.forlabs-dark-theme .content > a,
+html.forlabs-theme-vkusno.forlabs-dark-theme .big-logo {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Landing Page: All text & links permanently pure white in both Light & Dark modes */
+.bg-pale,
+.bg-pale *,
+.bg-pale a,
+.bg-pale a:visited,
+.bg-pale a:hover,
+.bg-pale a:active,
+.bg-pale a:focus,
+.bg-pale .nav .head,
+.bg-pale .nav .head div,
+.bg-pale .nav .links > a,
+.bg-pale .nav .links > a:visited,
+.bg-pale .nav .links > a:hover,
+.bg-pale .nav .links > a:active,
+.bg-pale .footer,
+.forlabs-landing-page .nav .links > a,
+.forlabs-landing-page .nav .links > a:visited,
+.forlabs-landing-page .nav .links > a:hover,
+.forlabs-landing-page .footer,
+html[class*="forlabs-theme-"] .bg-pale a,
+html[class*="forlabs-theme-"] .bg-pale a:visited,
+html[class*="forlabs-theme-"] .bg-pale a:hover,
+html[class*="forlabs-theme-"] .bg-pale .nav .head,
+html[class*="forlabs-theme-"] .bg-pale .nav .head div,
+html[class*="forlabs-theme-"] .bg-pale .nav .links > a,
+html[class*="forlabs-theme-"] .bg-pale .nav .links > a:visited,
+html[class*="forlabs-theme-"] .bg-pale .nav .links > a:hover,
+html[class*="forlabs-theme-"] .bg-pale .footer,
+html[class*="forlabs-theme-"]:not(.forlabs-dark-theme) .bg-pale a,
+html[class*="forlabs-theme-"]:not(.forlabs-dark-theme) .bg-pale a:visited,
+html[class*="forlabs-theme-"]:not(.forlabs-dark-theme) .bg-pale a:hover,
+html[class*="forlabs-theme-"]:not(.forlabs-dark-theme) .bg-pale .nav .head,
+html[class*="forlabs-theme-"]:not(.forlabs-dark-theme) .bg-pale .nav .head div,
+html[class*="forlabs-theme-"]:not(.forlabs-dark-theme) .bg-pale .nav .links > a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-dark-theme) .bg-pale .nav .links > a,
+html[class*="forlabs-theme-"]:not(.forlabs-theme-default):not(.forlabs-dark-theme) .bg-pale .nav .links > a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .head,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .head div,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .footer,
+html.forlabs-theme-vkusno.forlabs-landing-page a,
+html.forlabs-theme-vkusno.forlabs-landing-page a:visited,
+html.forlabs-theme-vkusno.forlabs-landing-page a:hover,
+html.forlabs-theme-vkusno.forlabs-landing-page .footer {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html[class*="forlabs-theme-"] .bg-pale .nav .links > a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .bg-pale .nav .links > a:hover,
+html.forlabs-theme-vkusno.forlabs-landing-page a:hover {
+  text-decoration: underline !important;
+}
+
+/* "Я хочу Вкусно и точка" Master Overrides:
+   Final authority on pure white (dark) and pure black (light) text across the entire app */
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tabs .lm-tab-container .lm-tab-item.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tabs .lm-tab-item.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .lm-tab-item.active,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__type,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__study-name,
+html.forlabs-theme-vkusno.forlabs-dark-theme .schedule-entry__subject-name,
+html.forlabs-theme-vkusno.forlabs-dark-theme .forlabs-header-section-btn.active {
+  color: #ffffff !important;
+}
+
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tabs .lm-tab-container .lm-tab-item.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tabs .lm-tab-item.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-tab-item.active,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__type,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__study-name,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .schedule-entry__subject-name,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .forlabs-header-section-btn.active {
+  color: #111827 !important;
+}
+
+/* Sidebar Master Protection: Always crisp light/white over dark sidebar in all modes */
+html.forlabs-theme-vkusno .lm-panel .lm-menu a,
+html.forlabs-theme-vkusno .lm-panel .lm-menu a:visited,
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item a,
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item a:visited,
+html.forlabs-theme-vkusno .lm-menu a,
+html.forlabs-theme-vkusno .lm-menu a:visited,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-list-item a,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-list-item a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu a:visited,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item a:visited {
+  color: #cecece !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item.active > a,
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item a:hover,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-list-item.active > a,
+html.forlabs-theme-vkusno .lm-menu .lm-menu-list-item a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item.active > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item.active > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-sub-list-item a:hover,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item.active > a,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item a:hover {
+  color: #ffffff !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item-icon .fa {
+  color: inherit !important;
+}
+
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-panel .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon,
+html.forlabs-theme-vkusno:not(.forlabs-dark-theme) .lm-menu .lm-menu-list-item.active > a .lm-menu-list-item-icon .fa {
+  color: #ffffff !important;
+}

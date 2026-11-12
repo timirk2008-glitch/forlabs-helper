@@ -755,6 +755,107 @@
   };
 
   // =========================================================================
+  // Module 7: Color Themes Engine
+  // Supports: 'default' | 'purple' | 'vkusno'
+  // =========================================================================
+  const ColorThemesModule = {
+    id: 'colorTheme',
+    STORAGE_KEY: 'forlabs_color_theme',
+    currentTheme: 'default',
+    supportedThemes: ['default', 'purple', 'vkusno'],
+
+    init() {
+      try {
+        const cached = localStorage.getItem(this.STORAGE_KEY);
+        if (cached && this.supportedThemes.includes(cached)) {
+          this.currentTheme = cached;
+        } else {
+          this.currentTheme = 'default';
+        }
+      } catch (e) {
+        this.currentTheme = 'default';
+      }
+
+      this.ensureStylesInjected();
+      this.setupLandingAssets();
+      this.applyClass(this.currentTheme);
+    },
+
+    setupLandingAssets() {
+      try {
+        if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+          const bgUrl = chrome.runtime.getURL('content/IWent.png');
+          document.documentElement.style.setProperty('--fl-vkusno-landing-bg', `url("${bgUrl}")`);
+        }
+      } catch (e) {
+        // Handled silently
+      }
+
+      const markLanding = () => {
+        if (
+          location.pathname === '/' ||
+          location.pathname === '' ||
+          location.pathname === '/index.php' ||
+          location.pathname === '/index.html' ||
+          document.querySelector('.bg-pale') ||
+          document.querySelector('.big-logo')
+        ) {
+          document.documentElement.classList.add('forlabs-landing-page');
+          if (document.body) {
+            document.body.classList.add('forlabs-landing-body');
+          }
+        }
+      };
+
+      markLanding();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', markLanding, { once: true });
+      }
+    },
+
+    ensureStylesInjected() {
+      if (document.getElementById('forlabs-color-themes-link')) return;
+      try {
+        if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+          const link = document.createElement('link');
+          link.id = 'forlabs-color-themes-link';
+          link.rel = 'stylesheet';
+          link.href = chrome.runtime.getURL('content/color-themes.css');
+          (document.head || document.documentElement).appendChild(link);
+        }
+      } catch (e) {
+        // Handled silently
+      }
+    },
+
+    applyClass(theme) {
+      for (const t of this.supportedThemes) {
+        document.documentElement.classList.remove(`forlabs-theme-${t}`);
+      }
+      document.documentElement.classList.add(`forlabs-theme-${theme}`);
+    },
+
+    setTheme(theme, saveToStorage = true) {
+      if (!this.supportedThemes.includes(theme)) return;
+      this.currentTheme = theme;
+
+      runWithoutTransitions(() => {
+        this.applyClass(this.currentTheme);
+      });
+
+      try {
+        localStorage.setItem(this.STORAGE_KEY, this.currentTheme);
+      } catch (e) {
+        // Handled silently
+      }
+
+      if (saveToStorage && typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        chrome.storage.local.set({ [this.id]: this.currentTheme });
+      }
+    }
+  };
+
+  // =========================================================================
   // Central Module Coordinator
   // =========================================================================
   const ModuleManager = {
@@ -764,7 +865,8 @@
       menuStyle: MenuCustomizationModule,
       customScrollbar: CustomScrollbarModule,
       roundedInterface: RoundedInterfaceModule,
-      glassmorphism: GlassmorphismModule
+      glassmorphism: GlassmorphismModule,
+      colorTheme: ColorThemesModule
     },
 
     init() {
@@ -785,7 +887,8 @@
           menuStyle: this.modules.menuStyle.currentStyle,
           customScrollbar: this.modules.customScrollbar.isEnabled,
           roundedInterface: this.modules.roundedInterface.isEnabled,
-          glassmorphism: this.modules.glassmorphism.isEnabled
+          glassmorphism: this.modules.glassmorphism.isEnabled,
+          colorTheme: this.modules.colorTheme.currentTheme
         };
 
         chrome.storage.local.get(defaults, (res) => {
@@ -795,6 +898,12 @@
                 if (key === 'menuStyle' && typeof val === 'string' && val !== this.modules.menuStyle.currentStyle) {
                   try {
                     this.modules.menuStyle.setStyle(val, false);
+                  } catch (err) {
+                    console.error(`[Forlabs Helper] Error syncing module "${key}":`, err);
+                  }
+                } else if (key === 'colorTheme' && typeof val === 'string' && val !== this.modules.colorTheme.currentTheme) {
+                  try {
+                    this.modules.colorTheme.setTheme(val, false);
                   } catch (err) {
                     console.error(`[Forlabs Helper] Error syncing module "${key}":`, err);
                   }
@@ -819,6 +928,12 @@
                 if (key === 'menuStyle' && typeof change.newValue === 'string') {
                   try {
                     this.modules.menuStyle.setStyle(change.newValue, false);
+                  } catch (err) {
+                    console.error(`[Forlabs Helper] Error updating module "${key}":`, err);
+                  }
+                } else if (key === 'colorTheme' && typeof change.newValue === 'string') {
+                  try {
+                    this.modules.colorTheme.setTheme(change.newValue, false);
                   } catch (err) {
                     console.error(`[Forlabs Helper] Error updating module "${key}":`, err);
                   }

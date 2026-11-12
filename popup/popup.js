@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuIconCompact = document.getElementById('menu-icon-compact');
   const menuIconHeader = document.getElementById('menu-icon-header');
 
+  // Color Theme module UI elements
+  const colorThemeSelect = document.getElementById('color-theme-select');
+  const colorThemeIconWrap = document.getElementById('color-theme-icon-wrap');
+
   function updateThemeUI(isDark) {
     if (!themeToggle) return;
     themeToggle.checked = Boolean(isDark);
@@ -96,15 +100,35 @@ document.addEventListener('DOMContentLoaded', () => {
     menuIconHeader?.classList.toggle('hidden', targetStyle !== 'header');
   }
 
+  function updateColorThemeUI(theme) {
+    const targetTheme = ['default', 'purple', 'vkusno'].includes(theme) ? theme : 'default';
+    if (colorThemeSelect) {
+      colorThemeSelect.value = targetTheme;
+    }
+    if (colorThemeIconWrap) {
+      if (targetTheme === 'purple') {
+        colorThemeIconWrap.style.color = '#8b5cf6';
+        colorThemeIconWrap.style.backgroundColor = 'rgba(139, 92, 246, 0.15)';
+      } else if (targetTheme === 'vkusno') {
+        colorThemeIconWrap.style.color = '#ee7203';
+        colorThemeIconWrap.style.backgroundColor = 'rgba(238, 114, 3, 0.15)';
+      } else {
+        colorThemeIconWrap.style.color = '#0f8dad';
+        colorThemeIconWrap.style.backgroundColor = 'rgba(15, 141, 173, 0.15)';
+      }
+    }
+  }
+
   // Load current states from storage
   if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-    chrome.storage.local.get({ darkTheme: true, uiFixes: true, customScrollbar: true, roundedInterface: false, glassmorphism: false, menuStyle: 'original' }, (res) => {
+    chrome.storage.local.get({ darkTheme: true, uiFixes: true, customScrollbar: true, roundedInterface: false, glassmorphism: false, menuStyle: 'original', colorTheme: 'default' }, (res) => {
       updateThemeUI(res.darkTheme);
       updateUiFixesUI(res.uiFixes);
       updateScrollbarUI(res.customScrollbar);
       updateRoundedUI(res.roundedInterface);
       updateGlassmorphismUI(res.glassmorphism);
       updateMenuStyleUI(res.menuStyle);
+      updateColorThemeUI(res.colorTheme);
     });
 
     // Listen for storage changes across tabs or scripts
@@ -127,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if ('menuStyle' in changes) {
         updateMenuStyleUI(changes.menuStyle.newValue);
+      }
+      if ('colorTheme' in changes) {
+        updateColorThemeUI(changes.colorTheme.newValue);
       }
     });
   }
@@ -178,6 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMenuStyleUI(selectedStyle);
     if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
       chrome.storage.local.set({ menuStyle: selectedStyle });
+    }
+  });
+
+  // Handle color theme selection via dropdown
+  colorThemeSelect?.addEventListener('change', () => {
+    const selectedTheme = colorThemeSelect.value;
+    updateColorThemeUI(selectedTheme);
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({ colorTheme: selectedTheme });
     }
   });
 });

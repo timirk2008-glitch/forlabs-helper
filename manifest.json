@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Forlabs Helper — Тёмная тема и функции",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Тёмная тема и полезные инструменты для портала электронного образования Forlabs (БКИ ИГУ)",
   "icons": {
     "16": "icons/icon16.png",
@@ -36,7 +36,8 @@
         "content/menu-customization.css",
         "content/custom-scrollbar.css",
         "content/rounded-interface.css",
-        "content/glassmorphism.css"
+        "content/glassmorphism.css",
+        "content/color-themes.css"
       ],
       "js": [
         "content/content.js"
@@ -48,7 +49,9 @@
     {
       "resources": [
         "content/rounded-interface.css",
-        "content/glassmorphism.css"
+        "content/glassmorphism.css",
+        "content/color-themes.css",
+        "content/IWent.png"
       ],
       "matches": [
         "https://bki.forlabs.ru/*"

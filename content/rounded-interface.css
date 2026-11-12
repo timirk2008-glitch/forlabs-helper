@@ -184,7 +184,7 @@ html.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .
   left: 0 !important;
   right: 0 !important;
   height: 4px !important;
-  background-color: #0c7087 !important;
+  background-color: var(--fl-theme-primary, #0c7087) !important;
   border-radius: 4px !important;
 }
 
@@ -192,7 +192,7 @@ html.forlabs-dark-theme.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic)
 html.forlabs-dark-theme.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-item.active::after,
 html.forlabs-dark-theme.forlabs-rounded-interface .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after,
 html.forlabs-dark-theme.forlabs-rounded-interface.forlabs-ui-fixes .lm-tabs:not(.lm-tabs_classic) .lm-tab-container .lm-tab-item.active::after {
-  background-color: #0f8dad !important;
+  background-color: var(--fl-theme-accent, #0f8dad) !important;
 }
 
 /* Form Single-Line Inputs */
